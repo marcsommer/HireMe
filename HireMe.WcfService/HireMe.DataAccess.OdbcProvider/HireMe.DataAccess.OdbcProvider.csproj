@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HireMe.DataAccess">
+      <HintPath>..\..\HireMe\HireMe.DataAccess\bin\Debug\HireMe.DataAccess.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,12 +45,6 @@
   <ItemGroup>
     <Compile Include="CustomerDataAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\HireMe.DataAccess.Server\HireMe.DataAccess.Server.csproj">
-      <Project>{A1BA92C3-9E60-4B97-BD4A-7E8A145BF7A1}</Project>
-      <Name>HireMe.DataAccess.Server</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

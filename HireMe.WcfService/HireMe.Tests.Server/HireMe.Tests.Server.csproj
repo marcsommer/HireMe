@@ -36,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HireMe.DataAccess">
+      <HintPath>..\..\HireMe\HireMe.DataAccess\bin\Debug\HireMe.DataAccess.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\..\dependencies\nunit\nunit.framework.dll</HintPath>
     </Reference>
@@ -102,6 +105,12 @@
   <ItemGroup>
     <Folder Include="MockOdbc\" />
     <Folder Include="WcfService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HireMe.DataAccess.OdbcProvider\HireMe.DataAccess.OdbcProvider.csproj">
+      <Project>{38775B08-E0D4-4A2F-AA48-56F3589DB368}</Project>
+      <Name>HireMe.DataAccess.OdbcProvider</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
