@@ -6,6 +6,8 @@ using System.Linq;
 using System.Windows;
 using HireMe.DataAccess.OdbcProvider;
 using HireMe.Tests.Server.DataAccess.OdbcProvider;
+using HireMe.Tests.Server.DataAccess.MockDataProvider;
+using HireMe.DataAccess;
 
 namespace HireMe.Tests.Server
 {
@@ -16,10 +18,22 @@ namespace HireMe.Tests.Server
   {
     protected override void OnStartup(StartupEventArgs e)
     {
-      CustomerDataProviderTest test = new CustomerDataProviderTest();
-      test.CREATE_NEW_CUSTOMER_DTO();
-      test.GET_CUSTOMER_DTO();
-      test.GET_ALL_CUSTOMER_DTOS();
+      MockCustomerDataAdapterTests mockTests = new MockCustomerDataAdapterTests();
+      mockTests.CREATE_NEW_CUSTOMER_DTO();
+
+      OdbcCustomerDataAdapterTests odbcTests = new OdbcCustomerDataAdapterTests();
+      odbcTests.CREATE_NEW_CUSTOMER_DTO();
+      odbcTests.GET_CUSTOMER_DTO();
+      odbcTests.GET_ALL_CUSTOMER_DTOS();
+      odbcTests.UPDATE_CUSTOMER_DTO();
+      try
+      {
+        odbcTests.DELETE_CUSTOMER_EXPECT_CUSTOMERDATAEXCEPTION();
+      }
+      catch (CustomerDataException cde)
+      {
+        //expected exception
+      }
 
 
       base.OnStartup(e);

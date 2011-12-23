@@ -11,6 +11,10 @@ namespace HireMe.MockData
   /// </summary>
   public class CustomerData
   {
+    public CustomerData()
+    {
+      ReviewIds = new List<Guid>();
+    }
     public Guid CustomerId { get; set; }
     public string Name { get; set; }
     public string EmailAddress { get; set; }

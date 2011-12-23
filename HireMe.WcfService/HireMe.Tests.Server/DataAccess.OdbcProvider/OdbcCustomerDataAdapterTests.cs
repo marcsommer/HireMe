@@ -5,23 +5,24 @@ using System.Text;
 using NUnit.Framework;
 using HireMe.DataAccess.OdbcProvider;
 using HireMe.DataAccess;
+using HireMe.WcfService;
 
 namespace HireMe.Tests.Server.DataAccess.OdbcProvider
 {
   [TestFixture]
-  public class CustomerDataProviderTest
+  public class OdbcCustomerDataAdapterTests : IDataAdapterTests
   {
     [Test]
     public void CREATE_NEW_CUSTOMER_DTO()
     {
-      CustomerDataAdapter adapter = new CustomerDataAdapter();
+      OdbcCustomerDataAdapter adapter = new OdbcCustomerDataAdapter();
       var dto = adapter.Create();
     }
 
     [Test]
     public void GET_CUSTOMER_DTO()
     {
-      CustomerDataAdapter adapter = new CustomerDataAdapter();
+      OdbcCustomerDataAdapter adapter = new OdbcCustomerDataAdapter();
       var dto = adapter.Create();
       dto = adapter.Get(dto.CustomerId);
     }
@@ -29,7 +30,7 @@ namespace HireMe.Tests.Server.DataAccess.OdbcProvider
     [Test]
     public void GET_ALL_CUSTOMER_DTOS()
     {
-      CustomerDataAdapter adapter = new CustomerDataAdapter();
+      OdbcCustomerDataAdapter adapter = new OdbcCustomerDataAdapter();
       IList<CustomerDto> allDtos = adapter.GetAll();
       if (allDtos.Count == 0)
         throw new Exception("GetAll() returned Zero records.  This is expected if there are no records in DB.");
@@ -38,7 +39,7 @@ namespace HireMe.Tests.Server.DataAccess.OdbcProvider
     [Test]
     public void UPDATE_CUSTOMER_DTO()
     {
-      var adapter = new CustomerDataAdapter();
+      var adapter = new OdbcCustomerDataAdapter();
       var dto = adapter.Create();
       var updatedTestName = "UpdatedNameHere";
       var updatedTestEmail = "test123@testtessttessettsetsete.com";
@@ -46,6 +47,25 @@ namespace HireMe.Tests.Server.DataAccess.OdbcProvider
       dto.EmailAddress = updatedTestEmail;
 
       adapter.Update(dto);
+    }
+
+    [Test]
+    [ExpectedException(typeof(CustomerDataException))]
+    public void DELETE_CUSTOMER_EXPECT_CUSTOMERDATAEXCEPTION()
+    {
+      var adapter = new OdbcCustomerDataAdapter();
+      //CREATE
+      var dto = adapter.Create();
+
+      //EDIT/UPDATE
+      dto.Name = "NameHere";
+      adapter.Update(dto);
+
+      //DELETE
+      adapter.Delete(dto.CustomerId);
+
+      //TRY TO GET(ID), SHOULD THROW CUSTOMERDATAEXCEPTION
+      adapter.Get(dto.CustomerId);
     }
   }
 }

@@ -12,7 +12,7 @@ namespace HireMe.DataAccess.OdbcProvider
   /// Conventions: Throws exceptions if not found
   /// </summary>
   [Export(typeof(ICustomerDal))]
-  public class CustomerDataAdapter : ICustomerDal
+  public class OdbcCustomerDataAdapter : ICustomerDal
   {
     public CustomerDto Create()
     {
@@ -126,8 +126,8 @@ namespace HireMe.DataAccess.OdbcProvider
       {
         connection.Open();
         string queryStr = string.Format(@"UPDATE {0} " +               //Update Customers table
-                                        @"SET {1} = '{2}' " +          //Set Name = dto.Name
-                                        @"SET {3} = '{4}' " +          //Set EmailAddress = dto.EmailAddress
+                                        @"SET {1} = '{2}', " +          //Set Name = dto.Name
+                                            @"{3} = '{4}' " +          //Set EmailAddress = dto.EmailAddress
                                         @"WHERE {5} = '{6}'",          //Where Id = 'id'
                                         Properties.Resources.CustomerTable,
                                         Properties.Resources.NameColumn, dto.Name,
@@ -144,7 +144,19 @@ namespace HireMe.DataAccess.OdbcProvider
 
     public void Delete(Guid id)
     {
-      throw new NotImplementedException();
+      var connStr = Properties.Resources.ConnectionString;
+      using (OdbcConnection connection = new OdbcConnection(connStr))
+      {
+        connection.Open();
+        string queryStr = string.Format(@"DELETE FROM {0} " +          //Delete from Customers table
+                                        @"WHERE {1} = '{2}'",          //Where Id = 'id'
+                                        Properties.Resources.CustomerTable,
+                                        Properties.Resources.CustomerIdColumn, id.ToString());
+
+        OdbcCommand cmd = new OdbcCommand(queryStr, connection);
+
+        var numRowsAffected = cmd.ExecuteNonQuery();
+      }
     }
   }
 }

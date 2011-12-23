@@ -87,7 +87,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DataAccess.OdbcProvider\CustomerDataProviderTest.cs" />
+    <Compile Include="DataAccess.MockDataProvider\MockCustomerDataAdapterTests.cs" />
+    <Compile Include="DataAccess.OdbcProvider\OdbcCustomerDataAdapterTests.cs" />
+    <Compile Include="IDataAdapterTests.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -118,13 +120,24 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="MockOdbc\" />
     <Folder Include="WcfService\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HireMe.DataAccess.MockDataProvider\HireMe.DataAccess.MockDataProvider.csproj">
+      <Project>{98950AD7-ECE6-48B8-BC83-B15E54CF2E79}</Project>
+      <Name>HireMe.DataAccess.MockDataProvider</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HireMe.DataAccess.OdbcProvider\HireMe.DataAccess.OdbcProvider.csproj">
       <Project>{38775B08-E0D4-4A2F-AA48-56F3589DB368}</Project>
       <Name>HireMe.DataAccess.OdbcProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HireMe.MockData\HireMe.MockData.csproj">
+      <Project>{E098A7C7-E669-4E6A-AF05-8EE9E00166E4}</Project>
+      <Name>HireMe.MockData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HireMe.WcfService\HireMe.WcfService.csproj">
+      <Project>{2B93B708-7575-410E-AC3D-8E5FA24E4416}</Project>
+      <Name>HireMe.WcfService</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

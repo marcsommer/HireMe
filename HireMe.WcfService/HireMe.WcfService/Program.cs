@@ -29,7 +29,7 @@ namespace HireMe.WcfService
     private static void InitializeContainer()
     {
       AssemblyCatalog catThis = new AssemblyCatalog(typeof(Program).Assembly);
-      AssemblyCatalog catOdbcProvider = new AssemblyCatalog(typeof(CustomerDataAdapter).Assembly);
+      AssemblyCatalog catOdbcProvider = new AssemblyCatalog(typeof(OdbcCustomerDataAdapter).Assembly);
       AggregateCatalog allCatalogs = new AggregateCatalog(catThis, catOdbcProvider);
       CompositionContainer container = new CompositionContainer(allCatalogs);
       Services.Initialize(container);

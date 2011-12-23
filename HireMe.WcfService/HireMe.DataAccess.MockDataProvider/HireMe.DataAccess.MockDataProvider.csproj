@@ -44,8 +44,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MockDataAdapter.cs" />
+    <Compile Include="MockCustomerDataAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HireMe.MockData\HireMe.MockData.csproj">
+      <Project>{E098A7C7-E669-4E6A-AF05-8EE9E00166E4}</Project>
+      <Name>HireMe.MockData</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
