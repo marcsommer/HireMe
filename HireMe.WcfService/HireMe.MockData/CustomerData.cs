@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HireMe.MockOdbc
+namespace HireMe.MockData
 {
   /// <summary>
   /// Represents a customer entry in the mock database.
-  /// Data class corresponds to CustomerDto in HireMe.DataAccess (tightly coupled).
+  /// Data class mirrors CustomerDto in HireMe.DataAccess.
   /// </summary>
   public class CustomerData
   {

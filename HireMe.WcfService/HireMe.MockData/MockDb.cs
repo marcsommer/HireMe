@@ -5,7 +5,7 @@ using System.Text;
 
 using System.Data.Odbc;
 
-namespace HireMe.MockOdbc
+namespace HireMe.MockData
 {
   public static class MockDb
   {

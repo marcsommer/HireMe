@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("HireMe.MockOdbc")]
+[assembly: AssemblyTitle("HireMe.DataAccess.MockDataProvider")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("HireMe.MockOdbc")]
+[assembly: AssemblyProduct("HireMe.DataAccess.MockDataProvider")]
 [assembly: AssemblyCopyright("Copyright ©  2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("df6e9c01-564f-461a-89c8-675586d84921")]
+[assembly: Guid("dae441af-d3b5-4f4e-8f1c-f9abd7279685")]
 
 // Version information for an assembly consists of the following four values:
 //

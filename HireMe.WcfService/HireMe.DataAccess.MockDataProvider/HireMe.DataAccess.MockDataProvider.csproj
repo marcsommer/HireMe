@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{E098A7C7-E669-4E6A-AF05-8EE9E00166E4}</ProjectGuid>
+    <ProjectGuid>{98950AD7-ECE6-48B8-BC83-B15E54CF2E79}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HireMe.MockOdbc</RootNamespace>
-    <AssemblyName>HireMe.MockOdbc</AssemblyName>
+    <RootNamespace>HireMe.DataAccess.MockDataProvider</RootNamespace>
+    <AssemblyName>HireMe.DataAccess.MockDataProvider</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,7 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HireMe.DataAccess">
+      <HintPath>..\..\HireMe\HireMe.DataAccess\bin\Debug\HireMe.DataAccess.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,8 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomerData.cs" />
-    <Compile Include="MockDb.cs" />
+    <Compile Include="MockDataAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

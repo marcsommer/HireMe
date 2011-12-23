@@ -1,0 +1,29 @@
+PROJECT
+HireMe
+
+AUTHOR
+William Raiford (bill.mybiz@gmail.com)
+
+OBJECTIVE
+To show my skills with these particular technologies: C#, .NET, OOP, WCF, ADO.NET (ODBC in particular), SQL, N-Tier, MVVM, Modularity, IoC, Unit Testing, and my coding style in general.
+
+STRUCTURE OVERVIEW
+HireMe:     
+  -HireMe.Business
+  -HireMe.DataAccess
+  -HireMe.Tests
+  -HireMe.WcfClient
+  -HireMe.Wpf
+HireMe.WcfService:
+  -HireMe.DataAccess.MockDataProvider
+  -HireMe.DataAccess.OdbcProvider
+  -HireMe.MockData
+  -HireMe.Tests.Server
+  -HireMe.WcfService
+Data (DataSource):
+  -OdbcDataSource
+    -HireMeDatabase.mdf
+    -HireMeOdbc.dsn
+Dependencies:
+  -CaliburnMicro 1.2
+  -NUnit-2.5.10.11092 (net-2.0)
