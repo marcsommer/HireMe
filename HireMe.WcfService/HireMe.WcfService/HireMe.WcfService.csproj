@@ -20,7 +20,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;USE_MOCK</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -29,7 +29,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;USE_MOCK</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -60,6 +60,10 @@
     <Compile Include="Services.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HireMe.DataAccess.MockDataProvider\HireMe.DataAccess.MockDataProvider.csproj">
+      <Project>{98950AD7-ECE6-48B8-BC83-B15E54CF2E79}</Project>
+      <Name>HireMe.DataAccess.MockDataProvider</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HireMe.DataAccess.OdbcProvider\HireMe.DataAccess.OdbcProvider.csproj">
       <Project>{38775B08-E0D4-4A2F-AA48-56F3589DB368}</Project>
       <Name>HireMe.DataAccess.OdbcProvider</Name>

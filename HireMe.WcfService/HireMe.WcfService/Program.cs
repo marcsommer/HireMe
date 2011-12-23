@@ -9,6 +9,7 @@ using System.ServiceModel.Description;
 using System.ServiceModel;
 using HireMe.DataAccess;
 using System.Diagnostics;
+using HireMe.DataAccess.MockDataProvider;
 
 namespace HireMe.WcfService
 {
@@ -30,7 +31,13 @@ namespace HireMe.WcfService
     {
       AssemblyCatalog catThis = new AssemblyCatalog(typeof(Program).Assembly);
       AssemblyCatalog catOdbcProvider = new AssemblyCatalog(typeof(OdbcCustomerDataAdapter).Assembly);
+      AssemblyCatalog catMockProvider = new AssemblyCatalog(typeof(MockCustomerDataAdapter).Assembly);
+      //HACK: Recompilation needed to choose between mock and Odbc data providers (USE_MOCK directive)
+#if USE_MOCK
+      AggregateCatalog allCatalogs = new AggregateCatalog(catThis, catMockProvider);    
+#else
       AggregateCatalog allCatalogs = new AggregateCatalog(catThis, catOdbcProvider);
+#endif
       CompositionContainer container = new CompositionContainer(allCatalogs);
       Services.Initialize(container);
     }
