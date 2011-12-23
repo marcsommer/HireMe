@@ -59,19 +59,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MefBootstrapper.cs" />
     <Compile Include="Services.cs" />
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="Views\ShellView.xaml.cs">
+      <DependentUpon>ShellView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\ShellView.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -100,6 +97,20 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HireMe.Business\HireMe.Business.csproj">
+      <Project>{6F17F68A-BEDF-4414-9042-9B32BC0FBF9E}</Project>
+      <Name>HireMe.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HireMe.DataAccess\HireMe.DataAccess.csproj">
+      <Project>{09B00D36-7380-4602-ABDB-97A05F029F61}</Project>
+      <Name>HireMe.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HireMe.WcfClient\HireMe.WcfClient.csproj">
+      <Project>{99823993-93BF-41A3-A350-D6ADDA951E7A}</Project>
+      <Name>HireMe.WcfClient</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

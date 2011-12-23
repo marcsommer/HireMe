@@ -22,7 +22,6 @@ namespace HireMe.WcfService
       InitializeContainer();
       StartCustomerService();
 
-      //Just for the demo.
       Console.WriteLine("Services Running...\r\nPress ENTER to stop services and exit");
       Console.Read();
     }
@@ -66,6 +65,5 @@ namespace HireMe.WcfService
         host.Abort();
       }
     }
-    
   }
 }

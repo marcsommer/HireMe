@@ -14,7 +14,7 @@ namespace HireMe.Tests
       //Hack: NUnit tests are failing for proxy.  It is unable to instantiate the CustomerDalClient class,...
       //as it isn't able to locate the endpoint.  I've tried changing contract name, but that wasn't the problem.  
       //The app.config still isn't being copied to the right place for the NUnit tool (I only have VS 2010 Express, 
-      //so I can't run NUnit integrated into VS.  I had to set it up as an external tool that starts its own process 
+      //so I can't run NUnit integrated into VS).  I had to set it up as an external tool that starts its own process 
       //and then starts the startup project here.  So, I'm putting the unit tests here as a workaround to keep things 
       //moving along.  So, for individual tests that do not need to touch the WCF Service, I can use the NUnit external tool.
       //But the tests that DO touch the WCF Service are just run here.  I'll troubleshoot it more later.
@@ -24,10 +24,11 @@ namespace HireMe.Tests
       //Setup by initializing the SetupTearDownTests object
       var setupTearDownInitializer = new SetupTeardownTests();
       setupTearDownInitializer.SetupTests();
-      setupTearDownInitializer.TearDownTests();
 
       RunCustomerTests();
       RunProxyTests();
+
+      setupTearDownInitializer.TearDownTests();
     }
 
     private void RunProxyTests()
