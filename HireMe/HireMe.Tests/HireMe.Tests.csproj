@@ -46,7 +46,9 @@
       <HintPath>..\..\dependencies\nunit\pnunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -64,6 +66,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="SetupTeardownTests.cs" />
+    <Compile Include="Business\CustomerTests.cs" />
+    <Compile Include="HackCustomTests.cs" />
+    <Compile Include="WcfClient\CustomerDalProxyTests.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -95,6 +101,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="..\HireMe.WcfClient\app.config">
+      <Link>app.config</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -102,12 +112,32 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Business\" />
     <Folder Include="DataAccess\" />
-    <Folder Include="WcfClient\" />
     <Folder Include="Wpf\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HireMe.Business\HireMe.Business.csproj">
+      <Project>{6F17F68A-BEDF-4414-9042-9B32BC0FBF9E}</Project>
+      <Name>HireMe.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HireMe.DataAccess\HireMe.DataAccess.csproj">
+      <Project>{09B00D36-7380-4602-ABDB-97A05F029F61}</Project>
+      <Name>HireMe.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HireMe.WcfClient\HireMe.WcfClient.csproj">
+      <Project>{99823993-93BF-41A3-A350-D6ADDA951E7A}</Project>
+      <Name>HireMe.WcfClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HireMe.Wpf\HireMe.Wpf.csproj">
+      <Project>{1CCE6662-1551-4729-9D73-E9B4DA8443DF}</Project>
+      <Name>HireMe.Wpf</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

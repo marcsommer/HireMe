@@ -1,0 +1,7 @@
+﻿I just added the app.config file as a link to the HireMe.Wpf (Gui App) project.
+
+"When calling a WCF service from a class library project in Visual Studio 2010 
+you can use the Add Service Reference feature to automatically generate a 
+proxy and associated configuration file. The configuration file will not be 
+used by the class library project. You will need to copy the configuration file 
+to the directory that contains the executable that will call the class library."

@@ -3,34 +3,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using HireMe.DataAccess;
+using HireMe.WcfClient.WcfServices;
+using System.ComponentModel.Composition;
 
 namespace HireMe.WcfClient
 {
-  public class CustomerDalProxy : ICustomerDal
+  [Export(typeof(HireMe.DataAccess.ICustomerDal))]
+  public class CustomerDalProxy : HireMe.DataAccess.ICustomerDal
   {
+    public CustomerDalProxy()
+    {
+      _DalClient = new CustomerDalClient();
+    }
+
+    private CustomerDalClient _DalClient { get; set; }
+
     public CustomerDto Create()
     {
-      throw new NotImplementedException();
+      return _DalClient.Create();
     }
 
     public CustomerDto Get(Guid id)
     {
-      throw new NotImplementedException();
+      return _DalClient.Get(id);
     }
 
     public IList<CustomerDto> GetAll()
     {
-      throw new NotImplementedException();
+      return _DalClient.GetAll();
     }
 
-    public CustomerDto Update(Guid id)
+    public CustomerDto Update(CustomerDto dto)
     {
-      throw new NotImplementedException();
+      return _DalClient.Update(dto);
     }
 
     public void Delete(Guid id)
     {
-      throw new NotImplementedException();
+      _DalClient.Delete(id);
     }
   }
 }

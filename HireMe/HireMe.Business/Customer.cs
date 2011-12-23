@@ -124,7 +124,7 @@ namespace HireMe.Business
     protected override BusinessBase<Customer, CustomerDto> UpdateImpl()
     {
       //Update DB from object, return dto may contain new id
-      var dto = DalManager.CustomerDal.Update(Id);
+      var dto = DalManager.CustomerDal.Update(ToDto());
       SetIdBackingField(dto.CustomerId);
       return this;
     }
@@ -157,6 +157,17 @@ namespace HireMe.Business
       {
         EndDtoLoad();
       }
+    }
+    /// <summary>
+    /// Creates CustomerDto from Customer instance values
+    /// </summary>
+    /// <returns>Newly created CustomerDto</returns>
+    protected override CustomerDto ToDto()
+    {
+      return new CustomerDto() { CustomerId = this.Id, 
+                                 Name = this.Name, 
+                                 EmailAddress = this.EmailAddress, 
+                                 ReviewIds = new List<Guid>(this.ReviewIds) };
     }
   }
 }

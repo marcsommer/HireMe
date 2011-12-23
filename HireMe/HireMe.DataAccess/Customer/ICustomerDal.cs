@@ -6,7 +6,7 @@ using System.ServiceModel;
 
 namespace HireMe.DataAccess
 {
-  [ServiceContract(Namespace="http://HireMe.WcfService")]
+  [ServiceContract]
   public interface ICustomerDal : IDal<CustomerDto>
   {
     [OperationContract]
@@ -19,7 +19,7 @@ namespace HireMe.DataAccess
     new IList<CustomerDto> GetAll();
 
     [OperationContract]
-    new CustomerDto Update(Guid id);
+    new CustomerDto Update(CustomerDto dto);
 
     [OperationContract]
     new void Delete(Guid id);

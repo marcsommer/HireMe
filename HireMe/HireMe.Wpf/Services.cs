@@ -9,6 +9,11 @@ namespace HireMe.Wpf
 {
   public static class Services
   {
-    public static CompositionContainer Container { get; set; }
+    public static void Initialize(CompositionContainer container)
+    {
+      Container = container;
+    }
+
+    public static CompositionContainer Container { get; private set; }
   }
 }

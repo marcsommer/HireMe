@@ -1,0 +1,9 @@
+[ODBC]
+DRIVER=SQL Server
+UID=User
+AttachDBFileName=C:\HireMe\OdbcDataSource\HireMeDatabase.mdf
+DATABASE=HireMeDatabase
+WSID=USER-PC
+APP=Microsoft® Windows® Operating System
+Trusted_Connection=Yes
+SERVER=.\SQLEXPRESS

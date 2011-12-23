@@ -32,7 +32,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,12 +45,52 @@
   <ItemGroup>
     <Compile Include="CustomerDalProxy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\WcfServices\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HireMe.DataAccess\HireMe.DataAccess.csproj">
       <Project>{09B00D36-7380-4602-ABDB-97A05F029F61}</Project>
       <Name>HireMe.DataAccess</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\DataSources\HireMe.DataAccess.CustomerDto.datasource" />
+    <None Include="Service References\WcfServices\CustomerWcfService.wsdl" />
+    <None Include="Service References\WcfServices\HireMe.xsd" />
+    <None Include="Service References\WcfServices\HireMe1.xsd" />
+    <None Include="Service References\WcfServices\HireMe2.xsd" />
+    <None Include="Service References\WcfServices\HireMe3.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\WcfServices\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WcfServices\HireMe.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WcfServices\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WcfServices\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WcfServices\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="WcfServicesNotes.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

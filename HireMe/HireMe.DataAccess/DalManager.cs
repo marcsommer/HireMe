@@ -13,6 +13,7 @@ namespace HireMe.DataAccess
   /// </summary>
   public static class DalManager
   {
+    
     public static void Initialize(CompositionContainer container)
     {
       Container = container;

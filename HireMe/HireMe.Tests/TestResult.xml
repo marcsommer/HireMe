@@ -1,11 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="C:\Users\User\Documents\Visual Studio 2010\Projects\job\HireMe\HireMe.Tests\HireMe.Tests.csproj" total="0" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2011-12-22" time="10:20:24">
-  <environment nunit-version="2.5.10.11092" clr-version="2.0.50727.5448" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Users\User\Documents\Visual Studio 2010\Projects\job\HireMe\HireMe.Tests" machine-name="USER-PC" user="User" user-domain="User-PC" />
+<test-results name="C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\HireMe.Tests.csproj" total="2" errors="2" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2011-12-22" time="17:25:03">
+  <environment nunit-version="2.5.10.11092" clr-version="2.0.50727.5448" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests" machine-name="USER-PC" user="User" user-domain="User-PC" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Project" name="C:\Users\User\Documents\Visual Studio 2010\Projects\job\HireMe\HireMe.Tests\HireMe.Tests.csproj" executed="True" result="Inconclusive" success="False" time="0.014" asserts="0">
+  <test-suite type="Project" name="C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\HireMe.Tests.csproj" executed="True" result="Failure" success="False" time="0.602" asserts="0">
     <results>
-      <test-suite type="Assembly" name="C:\Users\User\Documents\Visual Studio 2010\Projects\job\HireMe\HireMe.Tests\bin\Debug\HireMe.Tests.exe" executed="True" result="Inconclusive" success="False" time="0.002" asserts="0" />
+      <test-suite type="Assembly" name="C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\bin\Debug\HireMe.Tests.exe" executed="True" result="Failure" success="False" time="0.595" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="HireMe" executed="True" result="Failure" success="False" time="0.594" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="Tests" executed="True" result="Failure" success="False" time="0.593" asserts="0">
+                <results>
+                  <test-suite type="Namespace" name="Business" executed="True" result="Failure" success="False" time="0.107" asserts="0">
+                    <results>
+                      <test-suite type="TestFixture" name="CustomerTests" executed="True" result="Failure" success="False" time="0.105" asserts="0">
+                        <results>
+                          <test-case name="HireMe.Tests.Business.CustomerTests.CREATE_CUSTOMER" executed="True" result="Error" success="False" time="0.093" asserts="0">
+                            <failure>
+                              <message><![CDATA[System.NullReferenceException : Object reference not set to an instance of an object.]]></message>
+                              <stack-trace><![CDATA[at HireMe.Business.Customer.CreateNew() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Business\Customer.cs:line 107
+at HireMe.Tests.Business.CustomerTests.CREATE_CUSTOMER() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\Business\CustomerTests.cs:line 16
+]]></stack-trace>
+                            </failure>
+                          </test-case>
+                        </results>
+                      </test-suite>
+                    </results>
+                  </test-suite>
+                  <test-suite type="Namespace" name="WcfClient" executed="True" result="Failure" success="False" time="0.394" asserts="0">
+                    <results>
+                      <test-suite type="TestFixture" name="CustomerDalProxyTests" executed="True" result="Failure" success="False" time="0.392" asserts="0">
+                        <results>
+                          <test-case name="HireMe.Tests.WcfClient.CustomerDalProxyTests.CREATE_NEW" executed="True" result="Error" success="False" time="0.389" asserts="0">
+                            <failure>
+                              <message><![CDATA[System.InvalidOperationException : Could not find default endpoint element that references contract 'WcfServices.ICustomerDal' in the ServiceModel client configuration section. This might be because no configuration file was found for your application, or because no endpoint element matching this contract could be found in the client element.]]></message>
+                              <stack-trace><![CDATA[at System.ServiceModel.Description.ConfigLoader.LoadChannelBehaviors(ServiceEndpoint serviceEndpoint, String configurationName)
+at System.ServiceModel.ChannelFactory.ApplyConfiguration(String configurationName, Configuration configuration)
+at System.ServiceModel.ChannelFactory.ApplyConfiguration(String configurationName)
+at System.ServiceModel.ChannelFactory.InitializeEndpoint(String configurationName, EndpointAddress address)
+at System.ServiceModel.ChannelFactory`1..ctor(String endpointConfigurationName, EndpointAddress remoteAddress)
+at System.ServiceModel.EndpointTrait`1.CreateSimplexFactory()
+at System.ServiceModel.ClientBase`1.CreateChannelFactoryRef(EndpointTrait`1 endpointTrait)
+at System.ServiceModel.ClientBase`1.InitializeChannelFactoryRef()
+at System.ServiceModel.ClientBase`1..ctor()
+at HireMe.WcfClient.WcfServices.CustomerDalClient..ctor() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\Service References\WcfServices\Reference.cs:line 42
+at HireMe.WcfClient.CustomerDalProxy..ctor() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\CustomerDalProxy.cs:line 16
+at HireMe.Tests.WcfClient.CustomerDalProxyTests.CREATE_NEW() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\WcfClient\CustomerDalProxyTests.cs:line 16
+]]></stack-trace>
+                            </failure>
+                          </test-case>
+                        </results>
+                      </test-suite>
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
     </results>
   </test-suite>
 </test-results>

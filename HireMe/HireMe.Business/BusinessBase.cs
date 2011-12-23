@@ -108,6 +108,11 @@ namespace HireMe.Business
       }
     }
     /// <summary>
+    /// Creates Dto from this instance
+    /// </summary>
+    /// <returns></returns>
+    protected abstract TDto ToDto();
+    /// <summary>
     /// Implement this for loading your object's state from a dto.
     /// </summary>
     /// <param name="dto">Your business class's Dto</param>

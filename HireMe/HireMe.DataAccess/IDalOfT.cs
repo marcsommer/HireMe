@@ -5,12 +5,12 @@ using System.Text;
 
 namespace HireMe.DataAccess
 {
-  public interface IDal<T> 
+  public interface IDal<TDto> 
   {
-    T Create();
-    T Get(Guid id);
-    IList<T> GetAll();
-    T Update(Guid id);
+    TDto Create();
+    TDto Get(Guid id);
+    IList<TDto> GetAll();
+    TDto Update(TDto dto);
     void Delete(Guid id);
   }
 }
