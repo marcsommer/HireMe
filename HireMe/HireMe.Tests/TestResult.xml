@@ -1,49 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\HireMe.Tests.csproj" total="1" errors="0" failures="1" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2011-12-23" time="23:38:25">
+<test-results name="C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\HireMe.Tests.csproj" total="16" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2011-12-24" time="10:21:57">
   <environment nunit-version="2.5.10.11092" clr-version="2.0.50727.5448" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests" machine-name="USER-PC" user="User" user-domain="User-PC" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Project" name="C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\HireMe.Tests.csproj" executed="True" result="Failure" success="False" time="0.030" asserts="0">
+  <test-suite type="Project" name="C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\HireMe.Tests.csproj" executed="True" result="Success" success="True" time="24.302" asserts="0">
     <results>
-      <test-suite type="Assembly" name="C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\bin\Debug\HireMe.Tests.exe" executed="True" result="Failure" success="False" time="0.026" asserts="0">
+      <test-suite type="Assembly" name="C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\bin\Debug\HireMe.Tests.exe" executed="True" result="Success" success="True" time="24.280" asserts="0">
         <results>
-          <test-suite type="Namespace" name="HireMe" executed="True" result="Failure" success="False" time="0.024" asserts="0">
+          <test-suite type="Namespace" name="HireMe" executed="True" result="Success" success="True" time="24.278" asserts="0">
             <results>
-              <test-suite type="SetUpFixture" name="Tests" executed="True" result="Error" success="False" time="0.022" asserts="0">
-                <failure>
-                  <message><![CDATA[SetUp : System.ComponentModel.Composition.CompositionException : The composition produced a single composition error. The root cause is provided below. Review the CompositionException.Errors property for more detailed information.
-
-1) Could not find default endpoint element that references contract 'WcfServices.Customer.ICustomerDal' in the ServiceModel client configuration section. This might be because no configuration file was found for your application, or because no endpoint element matching this contract could be found in the client element.
-
-Resulting in: An exception occurred while trying to create an instance of type 'HireMe.WcfClient.CustomerDalProxy'.
-
-Resulting in: Cannot activate part 'HireMe.WcfClient.CustomerDalProxy'.
-Element: HireMe.WcfClient.CustomerDalProxy -->  HireMe.WcfClient.CustomerDalProxy -->  AssemblyCatalog (Assembly="HireMe.WcfClient, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null")
-
-Resulting in: Cannot get export 'HireMe.WcfClient.CustomerDalProxy (ContractName="HireMe.DataAccess.ICustomerDal")' from part 'HireMe.WcfClient.CustomerDalProxy'.
-Element: HireMe.WcfClient.CustomerDalProxy (ContractName="HireMe.DataAccess.ICustomerDal") -->  HireMe.WcfClient.CustomerDalProxy -->  AssemblyCatalog (Assembly="HireMe.WcfClient, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null")
-]]></message>
-                  <stack-trace><![CDATA[at System.ComponentModel.Composition.Hosting.CompositionServices.GetExportedValueFromComposedPart(ImportEngine engine, ComposablePart part, ExportDefinition definition)
-at System.ComponentModel.Composition.Hosting.CatalogExportProvider.GetExportedValue(ComposablePart part, ExportDefinition export, Boolean isSharedPart)
-at System.ComponentModel.Composition.Hosting.CatalogExportProvider.CatalogExport.GetExportedValueCore()
-at System.ComponentModel.Composition.Primitives.Export.get_Value()
-at System.ComponentModel.Composition.ExportServices.GetExportedValueFromLazy[T](Export export)
-at System.ComponentModel.Composition.Hosting.ExportProvider.GetExportedValueCore[T](String contractName, ImportCardinality cardinality)
-at System.ComponentModel.Composition.Hosting.ExportProvider.GetExportedValue[T](String contractName)
-at System.ComponentModel.Composition.Hosting.ExportProvider.GetExportedValue[T]()
-at HireMe.DataAccess.DalManager.Initialize(CompositionContainer container) in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.DataAccess\DalManager.cs:line 19
-at HireMe.Tests.SetupTeardownTests.SetupTests() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\SetupTeardownTests.cs:line 28
-]]></stack-trace>
-                </failure>
+              <test-suite type="SetUpFixture" name="Tests" executed="True" result="Success" success="True" time="24.276" asserts="0">
                 <results>
-                  <test-case name="HireMe.Tests.Business.CustomerTests.COMMIT" executed="True" result="Failure" success="False" time="0.000" asserts="0">
-                    <failure>
-                      <message><![CDATA[TestFixtureSetUp failed in SetupTeardownTests]]></message>
-                      <stack-trace />
-                    </failure>
-                  </test-case>
-                  <test-suite type="TestFixture" name="CustomerTests" executed="True" result="Failure" success="False" time="0.000" asserts="0" />
-                  <test-suite type="Namespace" name="Business" executed="True" result="Failure" success="False" time="0.000" asserts="0" />
+                  <test-suite type="Namespace" name="Business" executed="True" result="Success" success="True" time="23.156" asserts="0">
+                    <results>
+                      <test-suite type="TestFixture" name="CustomerTests" executed="True" result="Success" success="True" time="20.374" asserts="0">
+                        <results>
+                          <test-case name="HireMe.Tests.Business.CustomerTests.COMMIT" executed="True" result="Success" success="True" time="10.928" asserts="1" />
+                          <test-case name="HireMe.Tests.Business.CustomerTests.CREATE" executed="True" result="Success" success="True" time="0.004" asserts="0" />
+                          <test-case name="HireMe.Tests.Business.CustomerTests.DELETE_IMMEDIATELY" executed="True" result="Success" success="True" time="2.533" asserts="0" />
+                          <test-case name="HireMe.Tests.Business.CustomerTests.GET" executed="True" result="Success" success="True" time="0.010" asserts="0" />
+                          <test-case name="HireMe.Tests.Business.CustomerTests.LOAD_FROM_DTO" executed="True" result="Success" success="True" time="6.832" asserts="4" />
+                          <test-case name="HireMe.Tests.Business.CustomerTests.TO_DTO" executed="True" result="Success" success="True" time="0.005" asserts="4" />
+                          <test-case name="HireMe.Tests.Business.CustomerTests.UPDATE" executed="True" result="Success" success="True" time="0.013" asserts="1" />
+                        </results>
+                      </test-suite>
+                      <test-suite type="TestFixture" name="ReviewTests" executed="True" result="Success" success="True" time="2.770" asserts="0">
+                        <results>
+                          <test-case name="HireMe.Tests.Business.ReviewTests.COMMIT" executed="True" result="Success" success="True" time="0.021" asserts="1" />
+                          <test-case name="HireMe.Tests.Business.ReviewTests.CREATE" executed="True" result="Success" success="True" time="0.004" asserts="0" />
+                          <test-case name="HireMe.Tests.Business.ReviewTests.DELETE_IMMEDIATELY" executed="True" result="Success" success="True" time="2.671" asserts="0" />
+                          <test-case name="HireMe.Tests.Business.ReviewTests.GET" executed="True" result="Success" success="True" time="0.010" asserts="0" />
+                          <test-case name="HireMe.Tests.Business.ReviewTests.LOAD_FROM_DTO" executed="True" result="Success" success="True" time="0.015" asserts="3" />
+                          <test-case name="HireMe.Tests.Business.ReviewTests.TO_DTO" executed="True" result="Success" success="True" time="0.004" asserts="3" />
+                          <test-case name="HireMe.Tests.Business.ReviewTests.UPDATE" executed="True" result="Success" success="True" time="0.010" asserts="0" />
+                        </results>
+                      </test-suite>
+                    </results>
+                  </test-suite>
+                  <test-suite type="Namespace" name="WcfClient" executed="True" result="Success" success="True" time="0.032" asserts="0">
+                    <results>
+                      <test-suite type="TestFixture" name="CustomerDalProxyTests" executed="True" result="Success" success="True" time="0.031" asserts="0">
+                        <results>
+                          <test-case name="HireMe.Tests.WcfClient.CustomerDalProxyTests.CREATE_PROXY_ITSELF" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                          <test-case name="HireMe.Tests.WcfClient.CustomerDalProxyTests.PROXY_CREATE_NEW_CUSTOMER" executed="True" result="Success" success="True" time="0.022" asserts="0" />
+                        </results>
+                      </test-suite>
+                    </results>
+                  </test-suite>
                 </results>
               </test-suite>
             </results>

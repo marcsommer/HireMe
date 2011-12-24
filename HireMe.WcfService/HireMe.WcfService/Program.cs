@@ -18,13 +18,8 @@ namespace HireMe.WcfService
     static void Main(string[] args)
     {
       Trace.Listeners.Add(new ConsoleTraceListener());
-      
       InitializeContainer();
-      StartCustomerService();
-      StartReviewService();
-
-      Console.WriteLine("Services Running...\r\nPress ENTER to stop services and exit");
-      Console.Read();
+      StartServices();
     }
 
     private static void InitializeContainer()
@@ -34,7 +29,7 @@ namespace HireMe.WcfService
       AssemblyCatalog catMockProvider = new AssemblyCatalog(typeof(MockCustomerDataAdapter).Assembly);
       //HACK: Recompilation needed to choose between mock and Odbc data providers (USE_MOCK directive)
 #if USE_MOCK
-      AggregateCatalog allCatalogs = new AggregateCatalog(catThis, catMockProvider);    
+      AggregateCatalog allCatalogs = new AggregateCatalog(catThis, catMockProvider);
 #else
       AggregateCatalog allCatalogs = new AggregateCatalog(catThis, catOdbcProvider);
 #endif
@@ -42,6 +37,14 @@ namespace HireMe.WcfService
       Services.Initialize(container);
     }
 
+    private static void StartServices()
+    {
+      StartCustomerService();
+      StartReviewService();
+
+      Console.WriteLine("Services Running...\r\nPress ENTER to stop services and exit");
+      Console.Read();
+    }
     private static void StartCustomerService()
     {
       var baseUri = new Uri(Properties.Resources.CustomerServiceBaseAddress); //http://localhost:8000/HireMe/Customer right now
@@ -53,9 +56,9 @@ namespace HireMe.WcfService
         host.AddServiceEndpoint(typeof(ICustomerDal), new WSHttpBinding(), endpointAddress);
 
         //ENABLE METADATA EXCHANGE
-        ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
-        smb.HttpGetEnabled = true;
-        host.Description.Behaviors.Add(smb);
+        //ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
+        //smb.HttpGetEnabled = true;
+        //host.Description.Behaviors.Add(smb);
         
         host.Open();
         Trace.WriteLine("Customer Service Started");
@@ -66,7 +69,6 @@ namespace HireMe.WcfService
         host.Abort();
       }
     }
-
     private static void StartReviewService()
     {
       var baseUri = new Uri(Properties.Resources.ReviewServiceBaseAddress); //http://localhost:8000/HireMe/Review right now
@@ -78,9 +80,9 @@ namespace HireMe.WcfService
         host.AddServiceEndpoint(typeof(IReviewDal), new WSHttpBinding(), endpointAddress);
 
         //ENABLE METADATA EXCHANGE
-        ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
-        smb.HttpGetEnabled = true;
-        host.Description.Behaviors.Add(smb);
+        //ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
+        //smb.HttpGetEnabled = true;
+        //host.Description.Behaviors.Add(smb);
 
         host.Open();
         Trace.WriteLine("Review Service Started");

@@ -54,14 +54,25 @@ namespace HireMe.DataAccess.MockDataProvider
     }
     private ReviewData GetReview(Guid id)
     {
-      var results = from data in MockData.MockDb.Reviews
-                    where data.ReviewId == id
-                    select data;
+      //For some reason, this is returning all reviews (ignoring where clause?)
+      //var results = from data in MockData.MockDb.Reviews
+      //              where data.ReviewId == id
+      //              select data;
+      //if (results.Count() != 1)
+      //  throw new ReviewDataException();
 
-      if (results.Count() != 1)
+      //return results.ElementAt(0);
+
+      var results = new List<ReviewData>();
+      foreach (var data in MockDb.Reviews)
+      {
+        if (data.ReviewId == id)
+          results.Add(data);
+      }
+      if (results.Count != 1)
         throw new ReviewDataException();
 
-      return results.ElementAt(0);
+      return results[0];
     }
   }
 

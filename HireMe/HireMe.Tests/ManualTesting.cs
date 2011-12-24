@@ -7,9 +7,9 @@ using HireMe.Tests.Business;
 
 namespace HireMe.Tests
 {
-  public class HackCustomTests
+  public class ManualTesting
   {
-    internal HackCustomTests()
+    internal ManualTesting()
     {
       //Hack: NUnit tests are failing for proxy.  It is unable to instantiate the CustomerDalClient class,...
       //as it isn't able to locate the endpoint.  I've tried changing contract name, but that wasn't the problem.  
@@ -21,12 +21,23 @@ namespace HireMe.Tests
 
       //So, work around for debuggin/breakpoints is to mimic a method here when needed.  It isn't ideal, but 
       //neither is working with Express Editions.
+
+      //SOLUTION:  Okay, after looking and looking at where and how to copy the app.config file properly so NUnit finds it, 
+      //I finally came across http://blogs.msdn.com/b/josealmeida/archive/2004/05/31/loading-config-files-in-nunit.aspx 
+      //where they explain that you can run //var location = AppDomain.CurrentDomain.SetupInformation.ConfigurationFile; to 
+      //find out where _exactly_(location AND filename) NUnit is looking for the config file.  I copied over the WcfClient.app.config
+      //file to this location "HireMe.Tests.config" in the "HireMe.Tests.csproj" directory and it works fine.  Wee dogey.
+
+      //I am still using this class when I want to step through code, as external NUnit tool does not allow me to do this.
+
       //Setup by initializing the SetupTearDownTests object
       var setupTearDownInitializer = new SetupTeardownTests();
       setupTearDownInitializer.SetupTests();
 
-      RunCustomerTests();
-      RunProxyTests();
+      //RunCustomerTests();
+      //RunProxyTests();
+      var tests = new ReviewTests();
+      tests.LOAD_FROM_DTO();
 
       setupTearDownInitializer.TearDownTests();
     }

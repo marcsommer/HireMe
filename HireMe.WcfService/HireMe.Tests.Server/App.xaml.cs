@@ -26,14 +26,15 @@ namespace HireMe.Tests.Server
       odbcTests.GET_DTO();
       odbcTests.GET_ALL_DTOS();
       odbcTests.UPDATE_DTO();
-      try
-      {
-        odbcTests.DELETE_ID_EXPECT_TYPEDATAEXCEPTION();
-      }
-      catch (CustomerDataException cde)
-      {
-        //expected exception
-      }
+
+      //try
+      //{
+      //  odbcTests.DELETE_ID_EXPECT_TYPEDATAEXCEPTION();
+      //}
+      //catch (CustomerDataException cde)
+      //{
+      //  //expected exception
+      //}
 
 
       base.OnStartup(e);

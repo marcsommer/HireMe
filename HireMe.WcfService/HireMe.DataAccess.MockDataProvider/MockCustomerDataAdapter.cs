@@ -61,14 +61,25 @@ namespace HireMe.DataAccess.MockDataProvider
     }
     private CustomerData GetCustomer(Guid id)
     {
-      var results = from data in MockData.MockDb.Customers
-                    where data.CustomerId == id
-                    select data;
+      //For some reason, this is returning all reviews (ignoring where clause?)
+      //var results = from data in MockData.MockDb.Customers
+      //              where data.CustomerId == id
+      //              select data;
+      //if (results.Count() != 1)
+      //  throw new CustomerDataException();
 
-      if (results.Count() != 1)
+      //return results.ElementAt(0);
+
+      var results = new List<CustomerData>();
+      foreach (var data in MockDb.Customers)
+      {
+        if (data.CustomerId == id)
+          results.Add(data);
+      }
+      if (results.Count != 1)
         throw new CustomerDataException();
 
-      return results.ElementAt(0);
+      return results[0];
     }
   }
 

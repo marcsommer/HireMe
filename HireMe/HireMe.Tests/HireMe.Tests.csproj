@@ -48,6 +48,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -70,7 +71,7 @@
     <Compile Include="IBusinessTests.cs" />
     <Compile Include="SetupTeardownTests.cs" />
     <Compile Include="Business\CustomerTests.cs" />
-    <Compile Include="HackCustomTests.cs" />
+    <Compile Include="ManualTesting.cs" />
     <Compile Include="WcfClient\CustomerDalProxyTests.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -105,8 +106,9 @@
     </EmbeddedResource>
     <None Include="..\HireMe.WcfClient\app.config">
       <Link>app.config</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Properties\DataSources\HireMe.DataAccess.CustomerDto.datasource" />
+    <None Include="Properties\DataSources\HireMe.DataAccess.ReviewDto.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

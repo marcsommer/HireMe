@@ -15,7 +15,6 @@ namespace HireMe.WcfService
     {
       Services.Container.SatisfyImportsOnce(this);
     }
-
     [Import]
     public ICustomerDal CustomerDalImpl { get; set; }
 
@@ -29,7 +28,6 @@ namespace HireMe.WcfService
     }
     public CustomerDto Get(Guid id)
     {
-      throw new NotImplementedException();//debug
       return CustomerDalImpl.Get(id);
     }
     public IList<CustomerDto> GetAll()

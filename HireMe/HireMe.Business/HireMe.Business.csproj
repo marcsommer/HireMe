@@ -48,7 +48,6 @@
     <Compile Include="Interfaces\IHaveDto.cs" />
     <Compile Include="Interfaces\IHaveHeirarchy.cs" />
     <Compile Include="Interfaces\IHaveId.cs" />
-    <Compile Include="Interfaces\IHaveStuff.cs" />
     <Compile Include="Interfaces\IUpdateable.cs" />
     <Compile Include="Review.cs" />
     <Compile Include="Customer.cs" />

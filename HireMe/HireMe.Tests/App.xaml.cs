@@ -16,7 +16,7 @@ namespace HireMe.Tests
   {
     protected override void OnStartup(StartupEventArgs e)
     {
-      HackCustomTests tests = new HackCustomTests(); //workaround testing starts in ctor
+      ManualTesting tests = new ManualTesting(); //workaround testing starts in ctor
 
       base.OnStartup(e);
     }

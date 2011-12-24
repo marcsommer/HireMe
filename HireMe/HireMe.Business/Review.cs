@@ -155,7 +155,8 @@ namespace HireMe.Business
       Rating = dto.Rating;
       Comments = dto.Comments;
       CustomerId = dto.CustomerId;
-      Parent = Customer.GetCustomer(dto.CustomerId);
+      if (!CustomerId.Equals(Guid.Empty))
+        Parent = Customer.GetCustomer(dto.CustomerId);
     }
     /// <summary>
     /// Creates ReviewDto from Review instance values
