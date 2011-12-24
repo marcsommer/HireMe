@@ -13,14 +13,15 @@ namespace HireMe.DataAccess
   /// </summary>
   public static class DalManager
   {
-    
     public static void Initialize(CompositionContainer container)
     {
       Container = container;
       CustomerDal = Container.GetExportedValue<ICustomerDal>();
+      ReviewDal = container.GetExportedValue<IReviewDal>();
     }
     public static CompositionContainer Container { get; set; }
 
     public static ICustomerDal CustomerDal { get; private set; }
+    public static IReviewDal ReviewDal { get; private set; }
   }
 }

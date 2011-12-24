@@ -19,16 +19,16 @@ namespace HireMe.Tests.Server
     protected override void OnStartup(StartupEventArgs e)
     {
       MockCustomerDataAdapterTests mockTests = new MockCustomerDataAdapterTests();
-      mockTests.CREATE_NEW_CUSTOMER_DTO();
+      mockTests.CREATE_NEW_DTO();
 
       OdbcCustomerDataAdapterTests odbcTests = new OdbcCustomerDataAdapterTests();
-      odbcTests.CREATE_NEW_CUSTOMER_DTO();
-      odbcTests.GET_CUSTOMER_DTO();
-      odbcTests.GET_ALL_CUSTOMER_DTOS();
-      odbcTests.UPDATE_CUSTOMER_DTO();
+      odbcTests.CREATE_NEW_DTO();
+      odbcTests.GET_DTO();
+      odbcTests.GET_ALL_DTOS();
+      odbcTests.UPDATE_DTO();
       try
       {
-        odbcTests.DELETE_CUSTOMER_EXPECT_CUSTOMERDATAEXCEPTION();
+        odbcTests.DELETE_ID_EXPECT_TYPEDATAEXCEPTION();
       }
       catch (CustomerDataException cde)
       {

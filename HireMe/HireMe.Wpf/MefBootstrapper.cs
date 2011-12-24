@@ -13,7 +13,6 @@ using HireMe.WcfClient;
 
 namespace HireMe.Wpf
 {
-
   public class MefBootstrapper : Bootstrapper<ViewModels.ShellViewModel>
   {
     private CompositionContainer _Container;
@@ -66,6 +65,4 @@ namespace HireMe.Wpf
       _Container.SatisfyImportsOnce(instance);
     }
   }
-
-
 }

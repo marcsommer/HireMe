@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/HireMe.DataAccess" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HireMe.DataAccess" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8000/HireMe/Review?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ReviewDto">
+    <xs:sequence>
+      <xs:element name="_x003C_Comments_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_CustomerId_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Rating_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_ReviewId_x003E_k__BackingField" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReviewDto" nillable="true" type="tns:ReviewDto" />
+  <xs:complexType name="ArrayOfReviewDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReviewDto" nillable="true" type="tns:ReviewDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReviewDto" nillable="true" type="tns:ArrayOfReviewDto" />
+</xs:schema>

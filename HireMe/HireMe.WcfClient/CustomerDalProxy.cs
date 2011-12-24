@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using HireMe.DataAccess;
-using HireMe.WcfClient.WcfServices;
+using HireMe.WcfClient.WcfServices.Customer;
 using System.ComponentModel.Composition;
 
 namespace HireMe.WcfClient

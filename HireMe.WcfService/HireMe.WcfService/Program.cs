@@ -21,6 +21,7 @@ namespace HireMe.WcfService
       
       InitializeContainer();
       StartCustomerService();
+      StartReviewService();
 
       Console.WriteLine("Services Running...\r\nPress ENTER to stop services and exit");
       Console.Read();
@@ -43,7 +44,7 @@ namespace HireMe.WcfService
 
     private static void StartCustomerService()
     {
-      var baseUri = new Uri(Properties.Resources.CustomerServiceBaseAddress); //http://localhost:8000/HireMe right now
+      var baseUri = new Uri(Properties.Resources.CustomerServiceBaseAddress); //http://localhost:8000/HireMe/Customer right now
       ServiceHost host = new ServiceHost(typeof(CustomerWcfService), baseUri);
       try
       {
@@ -58,6 +59,31 @@ namespace HireMe.WcfService
         
         host.Open();
         Trace.WriteLine("Customer Service Started");
+      }
+      catch (CommunicationException ce)
+      {
+        Trace.WriteLine(DateTime.Now.ToShortTimeString() + " | " + ce.Message + "\r\n");
+        host.Abort();
+      }
+    }
+
+    private static void StartReviewService()
+    {
+      var baseUri = new Uri(Properties.Resources.ReviewServiceBaseAddress); //http://localhost:8000/HireMe/Review right now
+      ServiceHost host = new ServiceHost(typeof(ReviewWcfService), baseUri);
+      try
+      {
+        //ADD REVIEW ENDPOINT
+        var endpointAddress = Properties.Resources.ReviewServiceRelativeAddress; //ReviewService right now
+        host.AddServiceEndpoint(typeof(IReviewDal), new WSHttpBinding(), endpointAddress);
+
+        //ENABLE METADATA EXCHANGE
+        ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
+        smb.HttpGetEnabled = true;
+        host.Description.Behaviors.Add(smb);
+
+        host.Open();
+        Trace.WriteLine("Review Service Started");
       }
       catch (CommunicationException ce)
       {

@@ -8,7 +8,5 @@
     </Grid.RowDefinitions>
     <TextBlock Text="This is the shell view" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     <Ellipse x:Name="Ellipse1" HorizontalAlignment="Stretch" Stroke="Black" VerticalAlignment="Stretch" />
-      
-    
   </Grid>
 </Window>

@@ -13,28 +13,28 @@ namespace HireMe.Tests.Server.DataAccess.MockDataProvider
   public class MockCustomerDataAdapterTests : IDataAdapterTests
   {
     [Test]
-    public void CREATE_NEW_CUSTOMER_DTO()
+    public void CREATE_NEW_DTO()
     {
       var adapter = new MockCustomerDataAdapter();
       var dto = adapter.Create();
     }
 
     [Test]
-    public void GET_CUSTOMER_DTO()
+    public void GET_DTO()
     {
       var adapter = new MockCustomerDataAdapter();
       var dto = adapter.Get(MockDb.Customers[0].CustomerId);
     }
 
     [Test]
-    public void GET_ALL_CUSTOMER_DTOS()
+    public void GET_ALL_DTOS()
     {
       var adapter = new MockCustomerDataAdapter();
       var allDtos = adapter.GetAll();
     }
 
     [Test]
-    public void UPDATE_CUSTOMER_DTO()
+    public void UPDATE_DTO()
     {
       var adapter = new MockCustomerDataAdapter();
       //GET THE FIRST CUSTOMER IN MOCKDB
@@ -50,24 +50,24 @@ namespace HireMe.Tests.Server.DataAccess.MockDataProvider
       adapter.Update(dto);
 
       //ASSERT THAT UPDATE OCCURRED
-      var checkDto = adapter.Get(dto.CustomerId);
+      var checkDto = adapter.Get(dto.Id);
       Assert.AreEqual(dto.Name, checkDto.Name);
       Assert.AreEqual(dto.EmailAddress, checkDto.EmailAddress);
     }
 
     [Test]
     [ExpectedException(typeof(CustomerDataException))]
-    public void DELETE_CUSTOMER_EXPECT_CUSTOMERDATAEXCEPTION()
+    public void DELETE_ID_EXPECT_TYPEDATAEXCEPTION()
     {
       //GET THE FIRST CUSTOMER IN MOCKDB
       var adapter = new MockCustomerDataAdapter();
       CustomerDto dto = MockCustomerDataAdapter.CreateDtoFromData(MockDb.Customers[0]);
 
       //ADAPTER.DELETE
-      adapter.Delete(dto.CustomerId);
+      adapter.Delete(dto.Id);
 
       //ATTEMPT GET ON DELETED CUSTOMER ID, SHOULD THROW CUSTOMERDATAEXCEPTION
-      adapter.Get(dto.CustomerId);
+      adapter.Get(dto.Id);
     }
   }
 }

@@ -13,7 +13,7 @@ namespace HireMe.Tests.WcfClient
     [Test]
     public void CREATE_PROXY_ITSELF()
     {
-      var proxy = new HireMe.WcfClient.WcfServices.CustomerDalClient();
+      var proxy = new HireMe.WcfClient.WcfServices.Customer.CustomerDalClient();
     }
 
     [Test]

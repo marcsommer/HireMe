@@ -118,9 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CustomerServiceBaseAddress" xml:space="preserve">
-    <value>http://localhost:8000/HireMe</value>
+    <value>http://localhost:8000/HireMe/Customer</value>
   </data>
   <data name="CustomerServiceRelativeAddress" xml:space="preserve">
     <value>CustomerService</value>
+  </data>
+  <data name="ReviewServiceBaseAddress" xml:space="preserve">
+    <value>http://localhost:8000/HireMe/Review</value>
+  </data>
+  <data name="ReviewServiceRelativeAddress" xml:space="preserve">
+    <value>ReviewService</value>
   </data>
 </root>

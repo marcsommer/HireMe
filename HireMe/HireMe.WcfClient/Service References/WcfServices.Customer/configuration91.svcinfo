@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="RBS6P+gtUU3Iaku+5o8tyaRMw4Y=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="zCTRiIOfuOscWEWAy6+WJ3SPaNw=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="wsHttpBinding" name="WSHttpBinding_ICustomerDal">
       <properties>
@@ -127,10 +127,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="WSHttpBinding_ICustomerDal" contract="WcfServices.ICustomerDal" bindingType="wsHttpBinding" address="http://localhost:8000/HireMe/CustomerService" bindingConfiguration="WSHttpBinding_ICustomerDal">
+    <endpoint name="WSHttpBinding_ICustomerDal" contract="WcfServices.Customer.ICustomerDal" bindingType="wsHttpBinding" address="http://localhost:8000/HireMe/Customer/CustomerService" bindingConfiguration="WSHttpBinding_ICustomerDal">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:8000/HireMe/CustomerService</serializedValue>
+          <serializedValue>http://localhost:8000/HireMe/Customer/CustomerService</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -142,7 +142,7 @@
           <serializedValue>WSHttpBinding_ICustomerDal</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>WcfServices.ICustomerDal</serializedValue>
+          <serializedValue>WcfServices.Customer.ICustomerDal</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>

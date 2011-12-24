@@ -61,7 +61,7 @@ namespace HireMe.WcfService.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://localhost:8000/HireMe.
+        ///   Looks up a localized string similar to http://localhost:8000/HireMe/Customer.
         /// </summary>
         public static string CustomerServiceBaseAddress {
             get {
@@ -75,6 +75,24 @@ namespace HireMe.WcfService.Properties {
         public static string CustomerServiceRelativeAddress {
             get {
                 return ResourceManager.GetString("CustomerServiceRelativeAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://localhost:8000/HireMe/Review.
+        /// </summary>
+        public static string ReviewServiceBaseAddress {
+            get {
+                return ResourceManager.GetString("ReviewServiceBaseAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ReviewService.
+        /// </summary>
+        public static string ReviewServiceRelativeAddress {
+            get {
+                return ResourceManager.GetString("ReviewServiceRelativeAddress", resourceCulture);
             }
         }
     }

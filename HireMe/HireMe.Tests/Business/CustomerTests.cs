@@ -8,12 +8,48 @@ using HireMe.Business;
 namespace HireMe.Tests.Business
 {
   [TestFixture]
-  public class CustomerTests
+  public class CustomerTests : IBusinessTests
   {
     [Test]
-    public void CREATE_CUSTOMER()
+    public void CREATE()
     {
-      var customer = Customer.CreateNew();
+      var cust = Customer.CreateNew();
+    }
+
+    [Test]
+    public void GET()
+    {
+      throw new NotImplementedException();
+    }
+
+    [Test]
+    public void UPDATE()
+    {
+      throw new NotImplementedException();
+    }
+
+    [Test]
+    public void DELETE_IMMEDIATELY()
+    {
+      throw new NotImplementedException();
+    }
+
+    [Test]
+    public void COMMIT()
+    {
+      throw new NotImplementedException();
+    }
+
+    [Test]
+    public void TO_DTO()
+    {
+      throw new NotImplementedException();
+    }
+
+    [Test]
+    public void LOAD_FROM_DTO()
+    {
+      throw new NotImplementedException();
     }
   }
 }

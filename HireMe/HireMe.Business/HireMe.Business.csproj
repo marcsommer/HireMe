@@ -41,6 +41,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessBase.cs" />
+    <Compile Include="Interfaces\IBusinessBase.cs" />
+    <Compile Include="Interfaces\ICommitable.cs" />
+    <Compile Include="Interfaces\IDeleteable.cs" />
+    <Compile Include="Interfaces\IDirtyable.cs" />
+    <Compile Include="Interfaces\IHaveDto.cs" />
+    <Compile Include="Interfaces\IHaveHeirarchy.cs" />
+    <Compile Include="Interfaces\IHaveId.cs" />
+    <Compile Include="Interfaces\IHaveStuff.cs" />
+    <Compile Include="Interfaces\IUpdateable.cs" />
+    <Compile Include="Review.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="CustomerException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -51,9 +61,7 @@
       <Name>HireMe.DataAccess</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="736e82a5-d720-43cd-8089-6d88948ddc28" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8000/HireMe/Customer" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Customer.xsd" MetadataType="Schema" ID="76d6b892-5f38-485c-8ed2-6c12310474f8" SourceId="1" SourceUrl="http://localhost:8000/HireMe/Customer?xsd=xsd1" />
+    <MetadataFile FileName="Customer1.xsd" MetadataType="Schema" ID="59e98bb3-d1dd-48b6-8425-0460ced697b1" SourceId="1" SourceUrl="http://localhost:8000/HireMe/Customer?xsd=xsd0" />
+    <MetadataFile FileName="Customer2.xsd" MetadataType="Schema" ID="c69c7f7c-d44b-4302-887b-799430cd08fb" SourceId="1" SourceUrl="http://localhost:8000/HireMe/Customer?xsd=xsd3" />
+    <MetadataFile FileName="Customer3.xsd" MetadataType="Schema" ID="c2fcaabc-708e-490b-8c43-068a4901123f" SourceId="1" SourceUrl="http://localhost:8000/HireMe/Customer?xsd=xsd2" />
+    <MetadataFile FileName="CustomerWcfService.wsdl" MetadataType="Wsdl" ID="e085c0b2-215d-4393-b221-9e0a89ef9341" SourceId="1" SourceUrl="http://localhost:8000/HireMe/Customer?wsdl" />
+    <MetadataFile FileName="Customer.disco" MetadataType="Disco" ID="8efd18dc-0e7e-49c4-9334-af562b886ad3" SourceId="1" SourceUrl="http://localhost:8000/HireMe/Customer?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

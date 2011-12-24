@@ -41,7 +41,13 @@ namespace HireMe.Tests
     private void RunCustomerTests()
     {
       var tests = new CustomerTests();
-      tests.CREATE_CUSTOMER();
+      tests.CREATE();
+      tests.GET();
+      tests.DELETE_IMMEDIATELY();
+      tests.UPDATE();
+      tests.COMMIT();
+      tests.LOAD_FROM_DTO();
+      tests.TO_DTO();
     }
   }
 }

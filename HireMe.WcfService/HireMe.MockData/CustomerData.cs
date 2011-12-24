@@ -9,6 +9,7 @@ namespace HireMe.MockData
   /// Represents a customer entry in the mock database.
   /// Data class mirrors CustomerDto in HireMe.DataAccess.
   /// </summary>
+  [Serializable]
   public class CustomerData
   {
     public CustomerData()

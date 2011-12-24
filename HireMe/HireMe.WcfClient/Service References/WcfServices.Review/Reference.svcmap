@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="fec405e7-cb34-47b7-b168-b20ff54e0dea" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8000/HireMe/Review" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ReviewWcfService.wsdl" MetadataType="Wsdl" ID="a732e381-2551-400d-9143-cd24e6f564cf" SourceId="1" SourceUrl="http://localhost:8000/HireMe/Review?wsdl" />
+    <MetadataFile FileName="Review.xsd" MetadataType="Schema" ID="3c14bf09-ef50-4456-b4f7-a85d1722414c" SourceId="1" SourceUrl="http://localhost:8000/HireMe/Review?xsd=xsd1" />
+    <MetadataFile FileName="Review.disco" MetadataType="Disco" ID="22b6765d-e6e1-424c-8c27-e07cfd3e93e2" SourceId="1" SourceUrl="http://localhost:8000/HireMe/Review?disco" />
+    <MetadataFile FileName="Review1.xsd" MetadataType="Schema" ID="a91d5e1f-d3e6-4eec-a78a-1328aa83db9a" SourceId="1" SourceUrl="http://localhost:8000/HireMe/Review?xsd=xsd0" />
+    <MetadataFile FileName="Review2.xsd" MetadataType="Schema" ID="58e265ad-bf6d-4f64-849a-1a1980ec5124" SourceId="1" SourceUrl="http://localhost:8000/HireMe/Review?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

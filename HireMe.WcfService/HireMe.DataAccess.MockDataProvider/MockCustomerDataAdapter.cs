@@ -42,7 +42,7 @@ namespace HireMe.DataAccess.MockDataProvider
     }
     public CustomerDto Update(CustomerDto dto)
     {
-      var data = GetCustomer(dto.CustomerId);
+      var data = GetCustomer(dto.Id);
       data.Name = dto.Name;
       data.EmailAddress = dto.EmailAddress;
       data.ReviewIds = new List<Guid>(dto.ReviewIds);
@@ -53,7 +53,7 @@ namespace HireMe.DataAccess.MockDataProvider
     {
       return new CustomerDto()
       {
-        CustomerId = data.CustomerId,
+        Id = data.CustomerId,
         Name = data.Name,
         EmailAddress = data.EmailAddress,
         ReviewIds = new List<Guid>(data.ReviewIds)

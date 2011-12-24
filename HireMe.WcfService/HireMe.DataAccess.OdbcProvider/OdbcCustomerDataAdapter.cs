@@ -17,7 +17,7 @@ namespace HireMe.DataAccess.OdbcProvider
     public CustomerDto Create()
     {
       //CREATE THE DTO
-      CustomerDto dto = new CustomerDto() { CustomerId = Guid.NewGuid(), Name = Properties.Resources.DefaultCustomerName };
+      CustomerDto dto = new CustomerDto() { Id = Guid.NewGuid(), Name = Properties.Resources.DefaultCustomerName };
 
       //INSERT INTO THE DB
       var connStr = Properties.Resources.ConnectionString;
@@ -52,7 +52,7 @@ namespace HireMe.DataAccess.OdbcProvider
                                         @"VALUES('{4}','{5}', '{6}');",
                                         Properties.Resources.CustomerTable,
                                         Properties.Resources.CustomerIdColumn, Properties.Resources.NameColumn, Properties.Resources.EmailAddressColumn,
-                                        dto.CustomerId, dto.Name, dto.EmailAddress);
+                                        dto.Id, dto.Name, dto.EmailAddress);
         var cmd = connection.CreateCommand();
         cmd.CommandText = queryStr;
         var numRowsAffected = cmd.ExecuteNonQuery();
@@ -80,7 +80,7 @@ namespace HireMe.DataAccess.OdbcProvider
         var reader = cmd.ExecuteReader(System.Data.CommandBehavior.SingleResult);
         if (reader.Read())
         {
-          dto.CustomerId = reader.GetGuid(reader.GetOrdinal(Properties.Resources.CustomerIdColumn));
+          dto.Id = reader.GetGuid(reader.GetOrdinal(Properties.Resources.CustomerIdColumn));
           dto.Name = reader.GetString(reader.GetOrdinal(Properties.Resources.NameColumn));
           dto.EmailAddress = reader.GetString(reader.GetOrdinal(Properties.Resources.EmailAddressColumn));
         }
@@ -109,7 +109,7 @@ namespace HireMe.DataAccess.OdbcProvider
         while (reader.Read())
         {
           var dto = new CustomerDto();
-          dto.CustomerId = reader.GetGuid(reader.GetOrdinal(Properties.Resources.CustomerIdColumn));
+          dto.Id = reader.GetGuid(reader.GetOrdinal(Properties.Resources.CustomerIdColumn));
           dto.Name = reader.GetString(reader.GetOrdinal(Properties.Resources.NameColumn));
           dto.EmailAddress = reader.GetString(reader.GetOrdinal(Properties.Resources.EmailAddressColumn));
           allDtos.Add(dto);
@@ -132,7 +132,7 @@ namespace HireMe.DataAccess.OdbcProvider
                                         Properties.Resources.CustomerTable,
                                         Properties.Resources.NameColumn, dto.Name,
                                         Properties.Resources.EmailAddressColumn, dto.EmailAddress,
-                                        Properties.Resources.CustomerIdColumn, dto.CustomerId.ToString());
+                                        Properties.Resources.CustomerIdColumn, dto.Id.ToString());
 
         OdbcCommand cmd = new OdbcCommand(queryStr, connection);
 

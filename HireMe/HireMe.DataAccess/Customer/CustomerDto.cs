@@ -13,7 +13,7 @@ namespace HireMe.DataAccess
       ReviewIds = new List<Guid>();
     }
 
-    public Guid CustomerId { get; set; }
+    public Guid Id { get; set; }
     public string Name { get; set; }
     public string EmailAddress { get; set; }
     public List<Guid> ReviewIds { get; set; }

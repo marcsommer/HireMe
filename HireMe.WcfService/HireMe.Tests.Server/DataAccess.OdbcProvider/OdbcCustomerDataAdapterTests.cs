@@ -13,22 +13,22 @@ namespace HireMe.Tests.Server.DataAccess.OdbcProvider
   public class OdbcCustomerDataAdapterTests : IDataAdapterTests
   {
     [Test]
-    public void CREATE_NEW_CUSTOMER_DTO()
+    public void CREATE_NEW_DTO()
     {
       OdbcCustomerDataAdapter adapter = new OdbcCustomerDataAdapter();
       var dto = adapter.Create();
     }
 
     [Test]
-    public void GET_CUSTOMER_DTO()
+    public void GET_DTO()
     {
       OdbcCustomerDataAdapter adapter = new OdbcCustomerDataAdapter();
       var dto = adapter.Create();
-      dto = adapter.Get(dto.CustomerId);
+      dto = adapter.Get(dto.Id);
     }
 
     [Test]
-    public void GET_ALL_CUSTOMER_DTOS()
+    public void GET_ALL_DTOS()
     {
       OdbcCustomerDataAdapter adapter = new OdbcCustomerDataAdapter();
       IList<CustomerDto> allDtos = adapter.GetAll();
@@ -37,7 +37,7 @@ namespace HireMe.Tests.Server.DataAccess.OdbcProvider
     }
 
     [Test]
-    public void UPDATE_CUSTOMER_DTO()
+    public void UPDATE_DTO()
     {
       var adapter = new OdbcCustomerDataAdapter();
       var dto = adapter.Create();
@@ -51,7 +51,7 @@ namespace HireMe.Tests.Server.DataAccess.OdbcProvider
 
     [Test]
     [ExpectedException(typeof(CustomerDataException))]
-    public void DELETE_CUSTOMER_EXPECT_CUSTOMERDATAEXCEPTION()
+    public void DELETE_ID_EXPECT_TYPEDATAEXCEPTION()
     {
       var adapter = new OdbcCustomerDataAdapter();
       //CREATE
@@ -62,10 +62,10 @@ namespace HireMe.Tests.Server.DataAccess.OdbcProvider
       adapter.Update(dto);
 
       //DELETE
-      adapter.Delete(dto.CustomerId);
+      adapter.Delete(dto.Id);
 
       //TRY TO GET(ID), SHOULD THROW CUSTOMERDATAEXCEPTION
-      adapter.Get(dto.CustomerId);
+      adapter.Get(dto.Id);
     }
   }
 }

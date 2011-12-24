@@ -15,7 +15,7 @@ namespace HireMe.Business
   public class Customer : BusinessBase<Customer, CustomerDto>
   {
     #region Properties
-
+    
     #region public string Name
 
     /// <summary>
@@ -37,7 +37,7 @@ namespace HireMe.Business
       if (value != _Name)
       {
         _Name = value;
-        MarkDirty();
+        MarkThisDirty();
       }
     }
 
@@ -64,7 +64,7 @@ namespace HireMe.Business
       if (value != _EmailAddress)
       {
         _EmailAddress = value;
-        MarkDirty();
+        MarkThisDirty();
       }
     }
 
@@ -91,7 +91,7 @@ namespace HireMe.Business
       if (value != _ReviewIds)
       {
         _ReviewIds = value;
-        MarkDirty();
+        MarkThisDirty();
       }
     }
 
@@ -100,33 +100,36 @@ namespace HireMe.Business
     #endregion
 
     #region Static Factory Methods (CreateNew/Get)
-
+    
     public static Customer CreateNew()
     {
       var customer = new Customer();
       customer.LoadFromDto(DalManager.CustomerDal.Create());
+      customer.MarkThisDirty();
       return customer;
     }
     public static Customer GetCustomer(Guid id)
     {
       var customer = new Customer();
       customer.LoadFromDto(DalManager.CustomerDal.Get(id));
-      customer.MarkClean();
+      customer.MarkThisClean();
       return customer;
     }
-
+    
     #endregion
+
+    #region Business Base Overrides
 
     /// <summary>
     /// Updates the Customer object.  No need to check for IsDirty,
     /// that is handled by the BusinessBase class.
     /// </summary>
-    protected override BusinessBase<Customer, CustomerDto> UpdateImpl()
+    protected override void UpdateImpl()
     {
       //Update DB from object, return dto may contain new id
       var dto = DalManager.CustomerDal.Update(ToDto());
-      SetIdBackingField(dto.CustomerId);
-      return this;
+      SetIdBackingField(dto.Id);
+      MarkThisClean();
     }
     /// <summary>
     /// Deletes this object from the DB.
@@ -134,6 +137,7 @@ namespace HireMe.Business
     protected override void DeleteImpl()
     {
       DalManager.CustomerDal.Delete(Id);
+      MarkThisDirty();
     }
     /// <summary>
     /// Implements the load from a Dto
@@ -141,10 +145,10 @@ namespace HireMe.Business
     /// <param name="dto">CustomerDto with state to load</param>
     protected override void LoadFromDtoImpl(CustomerDto dto)
     {
-      BeginDtoLoad();
+      BeginLoadFromDto();
       try
       {
-        Id = dto.CustomerId;
+        Id = dto.Id;
         Name = dto.Name;
         EmailAddress = dto.EmailAddress;
         if (ReviewIds == null)
@@ -152,22 +156,36 @@ namespace HireMe.Business
         else
           ReviewIds.Clear();
         ReviewIds.AddRange(dto.ReviewIds);
+
+        //POPULATE CHILDREN REVIEWS
+        //If we were concerned about over-the-wire performance, we'd have to come up 
+        //with something more clever like Review.GetReviews(ReviewIds).
+        Children.Clear();
+        if (ReviewIds.Count > 0)
+        {
+          foreach (var reviewId in ReviewIds)
+          {
+            Children.Add(Review.GetReview(reviewId));
+          }
+        }
       }
       finally
       {
-        EndDtoLoad();
+        EndLoadFromDto();
       }
     }
     /// <summary>
     /// Creates CustomerDto from Customer instance values
     /// </summary>
     /// <returns>Newly created CustomerDto</returns>
-    protected override CustomerDto ToDto()
+    public override CustomerDto ToDto()
     {
-      return new CustomerDto() { CustomerId = this.Id, 
+      return new CustomerDto() { Id = this.Id, 
                                  Name = this.Name, 
                                  EmailAddress = this.EmailAddress, 
                                  ReviewIds = new List<Guid>(this.ReviewIds) };
     }
+
+    #endregion
   }
 }

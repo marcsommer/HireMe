@@ -43,9 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ReviewDalProxy.cs" />
     <Compile Include="CustomerDalProxy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\WcfServices\Reference.cs">
+    <Compile Include="Service References\WcfServices.Customer\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WcfServices.Review\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -65,31 +71,36 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\DataSources\HireMe.DataAccess.CustomerDto.datasource" />
-    <None Include="Service References\WcfServices\CustomerWcfService.wsdl" />
-    <None Include="Service References\WcfServices\HireMe.xsd" />
-    <None Include="Service References\WcfServices\HireMe1.xsd" />
-    <None Include="Service References\WcfServices\HireMe2.xsd" />
-    <None Include="Service References\WcfServices\HireMe3.xsd" />
+    <None Include="Properties\DataSources\HireMe.DataAccess.ReviewDto.datasource" />
+    <None Include="Service References\WcfServices.Customer\Customer.xsd" />
+    <None Include="Service References\WcfServices.Customer\Customer1.xsd" />
+    <None Include="Service References\WcfServices.Customer\Customer2.xsd" />
+    <None Include="Service References\WcfServices.Customer\Customer3.xsd" />
+    <None Include="Service References\WcfServices.Customer\CustomerWcfService.wsdl" />
+    <None Include="Service References\WcfServices.Review\Review.xsd" />
+    <None Include="Service References\WcfServices.Review\Review1.xsd" />
+    <None Include="Service References\WcfServices.Review\Review2.xsd" />
+    <None Include="Service References\WcfServices.Review\ReviewWcfService.wsdl" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\WcfServices\" />
+    <WCFMetadataStorage Include="Service References\WcfServices.Customer\" />
+    <WCFMetadataStorage Include="Service References\WcfServices.Review\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WcfServices\HireMe.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\WcfServices\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\WcfServices\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\WcfServices\Reference.svcmap">
+    <None Include="Service References\WcfServices.Review\Review.disco" />
+    <None Include="Service References\WcfServices.Review\configuration91.svcinfo" />
+    <None Include="Service References\WcfServices.Review\configuration.svcinfo" />
+    <None Include="Service References\WcfServices.Review\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="Service References\WcfServices.Customer\Customer.disco" />
+    <None Include="Service References\WcfServices.Customer\configuration91.svcinfo" />
+    <None Include="Service References\WcfServices.Customer\configuration.svcinfo" />
+    <None Include="Service References\WcfServices.Customer\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="WcfServicesNotes.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HireMe.WcfClient.WcfServices {
+namespace HireMe.WcfClient.WcfServices.Customer {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WcfServices.ICustomerDal")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WcfServices.Customer.ICustomerDal")]
     public interface ICustomerDal {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerDal/Create", ReplyAction="http://tempuri.org/ICustomerDal/CreateResponse")]
@@ -32,12 +32,12 @@ namespace HireMe.WcfClient.WcfServices {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ICustomerDalChannel : HireMe.WcfClient.WcfServices.ICustomerDal, System.ServiceModel.IClientChannel {
+    public interface ICustomerDalChannel : HireMe.WcfClient.WcfServices.Customer.ICustomerDal, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class CustomerDalClient : System.ServiceModel.ClientBase<HireMe.WcfClient.WcfServices.ICustomerDal>, HireMe.WcfClient.WcfServices.ICustomerDal {
+    public partial class CustomerDalClient : System.ServiceModel.ClientBase<HireMe.WcfClient.WcfServices.Customer.ICustomerDal>, HireMe.WcfClient.WcfServices.Customer.ICustomerDal {
         
         public CustomerDalClient() {
         }

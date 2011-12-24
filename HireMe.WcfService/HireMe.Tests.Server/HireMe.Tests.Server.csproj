@@ -87,6 +87,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DataAccess.MockDataProvider\MockReviewDataAdapterTests.cs" />
     <Compile Include="DataAccess.MockDataProvider\MockCustomerDataAdapterTests.cs" />
     <Compile Include="DataAccess.OdbcProvider\OdbcCustomerDataAdapterTests.cs" />
     <Compile Include="IDataAdapterTests.cs" />
