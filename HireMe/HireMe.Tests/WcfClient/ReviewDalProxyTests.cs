@@ -8,12 +8,12 @@ using HireMe.WcfClient;
 namespace HireMe.Tests
 {
   [TestFixture]
-  public class CustomerDalProxyTests
+  public class ReviewDalProxyTests
   {
     [Test]
     public void CREATE_PROXY_ITSELF()
     {
-      var proxy = new HireMe.WcfClient.WcfServices.Customer.CustomerDalClient();
+      var proxy = new HireMe.WcfClient.WcfServices.Review.ReviewDalClient();
     }
   }
 }

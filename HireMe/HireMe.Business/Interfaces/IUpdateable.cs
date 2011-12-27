@@ -5,9 +5,9 @@ using System.Text;
 
 namespace HireMe.Business.Interfaces
 {
-  public interface IUpdateable<T,Dto> : IHaveHeirarchy
+  public interface IUpdateable : IHaveHeirarchy
   {
-    BusinessBase<T, Dto> Update(bool updateChildren);
+    IBusinessBase Update(bool updateChildren);
     bool UpdateStarted { get; }
     void UpdateChildren();
   }

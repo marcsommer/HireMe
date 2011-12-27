@@ -7,36 +7,41 @@ using HireMe.DataAccess.MockDataProvider;
 using HireMe.MockData;
 using HireMe.DataAccess;
 
-namespace HireMe.Tests.Server.DataAccess.MockDataProvider
+namespace HireMe.Tests.Server
 {
   [TestFixture]
   public class MockCustomerDataAdapterTests : IDataAdapterTests
   {
+    private MockCustomerDataAdapter _Adapter;
+
+    [SetUp]
+    public void SetupTests()
+    {
+      MockDb.InitializeData();
+      _Adapter = new MockCustomerDataAdapter();
+    }
+
     [Test]
     public void CREATE_NEW_DTO()
     {
-      var adapter = new MockCustomerDataAdapter();
-      var dto = adapter.Create();
+      var dto = _Adapter.Create();
     }
 
     [Test]
     public void GET_DTO()
     {
-      var adapter = new MockCustomerDataAdapter();
-      var dto = adapter.Get(MockDb.Customers[0].CustomerId);
+      var dto = _Adapter.Get(MockDb.Customers[0].CustomerId);
     }
 
     [Test]
     public void GET_ALL_DTOS()
     {
-      var adapter = new MockCustomerDataAdapter();
-      var allDtos = adapter.GetAll();
+      var allDtos = _Adapter.GetAll();
     }
 
     [Test]
     public void UPDATE_DTO()
     {
-      var adapter = new MockCustomerDataAdapter();
       //GET THE FIRST CUSTOMER IN MOCKDB
       CustomerDto dto = MockCustomerDataAdapter.CreateDtoFromData(MockDb.Customers[0]);
 
@@ -47,10 +52,10 @@ namespace HireMe.Tests.Server.DataAccess.MockDataProvider
       dto.EmailAddress = newEmail;
 
       //ADAPTER.UPDATE
-      adapter.Update(dto);
+      _Adapter.Update(dto);
 
       //ASSERT THAT UPDATE OCCURRED
-      var checkDto = adapter.Get(dto.Id);
+      var checkDto = _Adapter.Get(dto.Id);
       Assert.AreEqual(dto.Name, checkDto.Name);
       Assert.AreEqual(dto.EmailAddress, checkDto.EmailAddress);
     }
@@ -60,14 +65,19 @@ namespace HireMe.Tests.Server.DataAccess.MockDataProvider
     public void DELETE_ID_EXPECT_TYPEDATAEXCEPTION()
     {
       //GET THE FIRST CUSTOMER IN MOCKDB
-      var adapter = new MockCustomerDataAdapter();
       CustomerDto dto = MockCustomerDataAdapter.CreateDtoFromData(MockDb.Customers[0]);
 
       //ADAPTER.DELETE
-      adapter.Delete(dto.Id);
+      _Adapter.Delete(dto.Id);
 
       //ATTEMPT GET ON DELETED CUSTOMER ID, SHOULD THROW CUSTOMERDATAEXCEPTION
-      adapter.Get(dto.Id);
+      _Adapter.Get(dto.Id);
+    }
+
+
+    public void GET_ALL_OBJECTS()
+    {
+      throw new NotImplementedException();
     }
   }
 }

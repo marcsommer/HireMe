@@ -21,6 +21,12 @@ namespace HireMe.WcfClient
     {
       return _DalClient.Create();
     }
+
+    public void Create(ReviewDto dto)
+    {
+      throw new NotImplementedException();
+    }
+
     public ReviewDto Get(Guid id)
     {
       return _DalClient.Get(id);
@@ -36,6 +42,11 @@ namespace HireMe.WcfClient
     public void Delete(Guid id)
     {
       _DalClient.Delete(id);
+    }
+
+    public ReviewDto Insert(ReviewDto dto)
+    {
+      throw new NotImplementedException();
     }
   }
 }

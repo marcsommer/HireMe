@@ -6,37 +6,42 @@ using NUnit.Framework;
 using HireMe.DataAccess.MockDataProvider;
 using HireMe.MockData;
 using HireMe.DataAccess;
+using HireMe.Business;
 
-namespace HireMe.Tests.Server.DataAccess.MockDataProvider
+namespace HireMe.Tests.Server
 {
   [TestFixture]
   public class MockReviewDataAdapterTests : IDataAdapterTests
   {
+    private MockReviewDataAdapter _Adapter;
+    [SetUp]
+    public void SetupTests()
+    {
+      MockDb.InitializeData();
+      _Adapter = new MockReviewDataAdapter();
+    }
+
     [Test]
     public void CREATE_NEW_DTO()
     {
-      var adapter = new MockReviewDataAdapter();
-      var dto = adapter.Create();
+      var dto = _Adapter.Create();
     }
 
     [Test]
     public void GET_DTO()
     {
-      var adapter = new MockReviewDataAdapter();
-      var dto = adapter.Get(MockDb.Reviews[0].ReviewId);
+      var dto = _Adapter.Get(MockDb.Reviews[0].ReviewId);
     }
 
     [Test]
     public void GET_ALL_DTOS()
     {
-      var adapter = new MockReviewDataAdapter();
-      var allDtos = adapter.GetAll();
+      var allDtos = _Adapter.GetAll();
     }
 
     [Test]
     public void UPDATE_DTO()
     {
-      var adapter = new MockReviewDataAdapter();
       //GET THE FIRST CUSTOMER IN MOCKDB
       var dto = MockReviewDataAdapter.CreateDtoFromData(MockDb.Reviews[0]);
 
@@ -48,10 +53,10 @@ namespace HireMe.Tests.Server.DataAccess.MockDataProvider
       dto.CustomerId = MockDb.CustId1;//hack:WcfService.Tests test update_dto
 
       //ADAPTER.UPDATE
-      adapter.Update(dto);
+      _Adapter.Update(dto);
 
       //ASSERT THAT UPDATE OCCURRED
-      var checkDto = adapter.Get(dto.Id);
+      var checkDto = _Adapter.Get(dto.Id);
       Assert.AreEqual(dto.Rating, checkDto.Rating);
       Assert.AreEqual(dto.Comments, checkDto.Comments);
       Assert.AreEqual(dto.CustomerId, checkDto.CustomerId);
@@ -62,14 +67,27 @@ namespace HireMe.Tests.Server.DataAccess.MockDataProvider
     public void DELETE_ID_EXPECT_TYPEDATAEXCEPTION()
     {
       //GET THE FIRST CUSTOMER IN MOCKDB
-      var adapter = new MockReviewDataAdapter();
       ReviewDto dto = MockReviewDataAdapter.CreateDtoFromData(MockDb.Reviews[0]);
 
       //ADAPTER.DELETE
-      adapter.Delete(dto.Id);
+      _Adapter.Delete(dto.Id);
 
       //ATTEMPT GET ON DELETED CUSTOMER ID, SHOULD THROW CUSTOMERDATAEXCEPTION
-      adapter.Get(dto.Id);
+      _Adapter.Get(dto.Id);
+    }
+
+
+    /// <summary>
+    /// Get all objects as opposed to Dtos
+    /// </summary>
+    [Test]
+    public void GET_ALL_OBJECTS()
+    {
+      var allDtos = _Adapter.GetAll();
+      foreach (var dto in allDtos)
+      {
+        var review = Review.Create(dto);
+      }
     }
   }
 }

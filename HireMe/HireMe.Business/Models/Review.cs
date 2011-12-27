@@ -43,7 +43,10 @@ namespace HireMe.Business
       {
         _Rating = value;
         if (!IsLoadingDto)
+        {
+          NotifyOfPropertyChange(() => Rating);
           MarkThisDirty();
+        }
       }
     }
 
@@ -71,7 +74,10 @@ namespace HireMe.Business
       {
         _Comments = value;
         if (!IsLoadingDto)
+        {
+          NotifyOfPropertyChange(() => Rating);
           MarkThisDirty();
+        }
       }
     }
 
@@ -99,7 +105,10 @@ namespace HireMe.Business
       {
         _CustomerId = value;
         if (!IsLoadingDto)
+        {
+          NotifyOfPropertyChange(() => Rating);
           MarkThisDirty();
+        }
       }
     }
 
@@ -116,15 +125,25 @@ namespace HireMe.Business
       review.MarkThisDirty();
       return review;
     }
+    public static Review Create(ReviewDto dto)
+    {
+      Review review = new Review();
+      review.LoadFromDto(dto);
+      review.Update();
+      return review;
+    }
     public static Review GetReview(Guid id)
     {
       var review = new Review();
-      review.LoadFromDto(DalManager.ReviewDal.Get(id));
+      var dto = DalManager.ReviewDal.Get(id);
+      review.LoadFromDto(dto);
       review.MarkThisClean();
       return review;
     }
 
     #endregion
+
+    #region BusinessBase Overrides
 
     /// <summary>
     /// Updates the Review object.  No need to check for IsDirty,
@@ -149,14 +168,17 @@ namespace HireMe.Business
     /// Implements the load from a Dto
     /// </summary>
     /// <param name="dto">ReviewDto with state to load</param>
-    protected override void LoadFromDtoImpl(ReviewDto dto)
+    protected override void LoadFromDtoImpl(ReviewDto dto, bool loadChildren)
     {
       Id = dto.Id;
       Rating = dto.Rating;
       Comments = dto.Comments;
       CustomerId = dto.CustomerId;
-      if (!CustomerId.Equals(Guid.Empty))
-        Parent = Customer.GetCustomer(dto.CustomerId);
+
+      //this causes infinite recursion
+      //SOLUTION: Customer takes on the responsibility of setting itself as the parent.
+      //if (!CustomerId.Equals(Guid.Empty))
+      //  Parent = Customer.GetCustomer(dto.CustomerId);
     }
     /// <summary>
     /// Creates ReviewDto from Review instance values
@@ -169,5 +191,24 @@ namespace HireMe.Business
                                Comments = this.Comments,
                                CustomerId = this.CustomerId };
     }
+    /// <summary>
+    /// Always returns null, as there are no children.
+    /// </summary>
+    /// <returns></returns>
+    protected override bool? GetChildrenAreLoaded()
+    {
+      return null;
+    }
+
+    /// <summary>
+    /// Does nothing.  This object has no children to load.
+    /// </summary>
+    public override void LoadChildren()
+    {
+      //elided
+    }
+
+
+    #endregion
   }
 }

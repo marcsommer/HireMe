@@ -51,7 +51,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HireMe.DataAccess">
+    <Reference Include="Caliburn.Micro">
+      <HintPath>..\..\dependencies\caliburn\Caliburn.Micro.dll</HintPath>
+    </Reference>
+    <Reference Include="HireMe.Business">
+      <HintPath>..\..\HireMe\HireMe.Business\bin\Debug\HireMe.Business.dll</HintPath>
+    </Reference>
+    <Reference Include="HireMe.DataAccess, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\HireMe\HireMe.DataAccess\bin\Debug\HireMe.DataAccess.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
@@ -98,6 +105,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ManualTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

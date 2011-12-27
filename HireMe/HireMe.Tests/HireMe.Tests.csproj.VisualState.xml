@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="false">
   <TopNode>[0-1000]C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\HireMe.Tests.csproj</TopNode>
-  <SelectedNode>[0-1013]HireMe.Tests.Business.CustomerTests.DELETE_IMMEDIATELY</SelectedNode>
+  <SelectedNode>[0-1010]HireMe.Tests.ReviewTests.CREATE_FROM_DTO</SelectedNode>
   <ExcludeCategories>false</ExcludeCategories>
   <Nodes>
     <Node UniqueName="[0-1000]C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\HireMe.Tests.csproj" Expanded="true" />
-    <Node UniqueName="[0-1021]C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\bin\Debug\HireMe.Tests.exe" Expanded="true" />
-    <Node UniqueName="[0-1022]HireMe" Expanded="true" />
-    <Node UniqueName="[0-1020]HireMe.Tests.SetupTeardownTests" Expanded="true" />
-    <Node UniqueName="[0-1024]HireMe.Tests.Business" Expanded="true" />
-    <Node UniqueName="[0-1009]HireMe.Tests.Business.CustomerTests" Expanded="true" />
-    <Node UniqueName="[0-1001]HireMe.Tests.Business.ReviewTests" Expanded="true" />
-    <Node UniqueName="[0-1025]HireMe.Tests.WcfClient" Expanded="true" />
-    <Node UniqueName="[0-1017]HireMe.Tests.WcfClient.CustomerDalProxyTests" Expanded="true" />
+    <Node UniqueName="[0-1027]C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\bin\Debug\HireMe.Tests.exe" Expanded="true" />
+    <Node UniqueName="[0-1028]HireMe" Expanded="true" />
+    <Node UniqueName="[0-1022]HireMe.Tests.SetupTeardownTests" Expanded="true" />
+    <Node UniqueName="[0-1020]HireMe.Tests.CustomerDalProxyTests" Expanded="true" />
+    <Node UniqueName="[0-1011]HireMe.Tests.CustomerTests" Expanded="true" />
+    <Node UniqueName="[0-1025]HireMe.Tests.CustomerViewModelTests" Expanded="true" />
+    <Node UniqueName="[0-1023]HireMe.Tests.ReviewDalProxyTests" Expanded="true" />
+    <Node UniqueName="[0-1001]HireMe.Tests.ReviewTests" Expanded="true" />
   </Nodes>
 </VisualState>

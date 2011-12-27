@@ -4,8 +4,6 @@ using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Windows;
-using HireMe.Tests.Business;
-using HireMe.Tests.WcfClient;
 
 namespace HireMe.Tests
 {
@@ -16,7 +14,7 @@ namespace HireMe.Tests
   {
     protected override void OnStartup(StartupEventArgs e)
     {
-      ManualTesting tests = new ManualTesting(); //workaround testing starts in ctor
+      ManualTests tests = new ManualTests(); //workaround testing starts in ctor
 
       base.OnStartup(e);
     }

@@ -23,6 +23,11 @@ namespace HireMe.WcfClient
       return _DalClient.Create();
     }
 
+    public void Create(CustomerDto dto)
+    {
+      throw new NotImplementedException();
+    }
+
     public CustomerDto Get(Guid id)
     {
       return _DalClient.Get(id);
@@ -41,6 +46,12 @@ namespace HireMe.WcfClient
     public void Delete(Guid id)
     {
       _DalClient.Delete(id);
+    }
+
+    public CustomerDto Insert(CustomerDto dto)
+    {
+      return null;
+      //_DalClient.Insert(dto);
     }
   }
 }

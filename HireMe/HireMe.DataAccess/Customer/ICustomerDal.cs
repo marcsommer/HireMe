@@ -11,7 +11,7 @@ namespace HireMe.DataAccess
   {
     [OperationContract]
     new CustomerDto Create();
-
+    
     [OperationContract]
     new CustomerDto Get(Guid id);
 

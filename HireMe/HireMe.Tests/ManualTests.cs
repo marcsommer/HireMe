@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using HireMe.Tests.WcfClient;
-using HireMe.Tests.Business;
 
 namespace HireMe.Tests
 {
-  public class ManualTesting
+  public class ManualTests
   {
-    internal ManualTesting()
+    internal ManualTests()
     {
       //Hack: NUnit tests are failing for proxy.  It is unable to instantiate the CustomerDalClient class,...
       //as it isn't able to locate the endpoint.  I've tried changing contract name, but that wasn't the problem.  
@@ -34,31 +32,43 @@ namespace HireMe.Tests
       var setupTearDownInitializer = new SetupTeardownTests();
       setupTearDownInitializer.SetupTests();
 
-      //RunCustomerTests();
-      //RunProxyTests();
-      var tests = new ReviewTests();
-      tests.LOAD_FROM_DTO();
+      try
+      {
+        //RunIBusinessTests(new CustomerTests());
+        RunIBusinessTests(new ReviewTests());
+        //RunProxyTests();
+        //RunViewModelTests();
+      }
+      finally
+      {
+        setupTearDownInitializer.TearDownTests();
+      }
+    }
 
-      setupTearDownInitializer.TearDownTests();
+    private void RunViewModelTests()
+    {
+      var tests = new CustomerViewModelTests();
+      tests.CUSTOMER_NAME_CHANGE_PROPAGATES_PROPERTY_CHANGED_TO_VIEWMODEL();
     }
 
     private void RunProxyTests()
     {
       var tests = new CustomerDalProxyTests();
       tests.CREATE_PROXY_ITSELF();
-      tests.PROXY_CREATE_NEW_CUSTOMER();
     }
 
-    private void RunCustomerTests()
+    
+
+    private void RunIBusinessTests(IBusinessTests tests)
     {
-      var tests = new CustomerTests();
-      tests.CREATE();
-      tests.GET();
-      tests.DELETE_IMMEDIATELY();
-      tests.UPDATE();
-      tests.COMMIT();
-      tests.LOAD_FROM_DTO();
-      tests.TO_DTO();
+      //tests.CREATE_NEW();
+      tests.CREATE_FROM_DTO();
+      //tests.GET();
+      //tests.DELETE_IMMEDIATELY();
+      //tests.UPDATE();
+      //tests.COMMIT();
+      //tests.LOAD_FROM_DTO();
+      //tests.TO_DTO();
     }
   }
 }

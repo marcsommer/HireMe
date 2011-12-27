@@ -7,21 +7,35 @@ using HireMe.Business;
 using HireMe.DataAccess;
 using System.ServiceModel;
 
-namespace HireMe.Tests.Business
+namespace HireMe.Tests
 {
   //TODO: Finish fleshing out customerTests to handle more complex scenarios
   [TestFixture]
   public class CustomerTests : IBusinessTests
   {
-    string _CustTestName = "TestName HereHere";
-    string _CustTestEmail = @"testtestonetwothree@testtestonetestonetest.com";
+    Guid _NewCustomerId = Guid.Parse(@"73D3252A-036D-4D8B-9061-BEFB6805F657");
+    string _NewCustomerName = "Newcome Customerm";
+    string _NewCustomerEmail = "newcustomerhereemail@emailcustomerherenew.com";
 
-    int _TestReview1Rating = 3;
-    string _TestReview1Id = @"9D749B35-ED9C-42E6-B02D-8EE2BC1E05F6";
-    string _TestReview2Id = @"33E7BBD5-B3DD-4166-BBBD-E94E5D477506";
+    Guid _NewReviewId = Guid.Parse(@"91067A89-8251-4AC0-9DAA-1EDBB703CC44");
+    int _NewReviewRating = 1;
+    string _NewReviewComments = "I think this is a new comment heeeyah.";
 
+    Guid _NewReviewId2 = Guid.Parse(@"67B42D5E-072D-4341-A46A-A750C9E4B61D");
+    int _NewReviewRating2 = 2;
+    string _NewReviewComments2 = "NEEEEEEEEEEEEEEEEEWSSSSY NEW Comments here.";
+
+    Guid _DeleteCustomerId = Guid.Parse(@"39E511CB-934E-433B-BB8A-0D7F44127529");
+    string _DeleteCustomerName = "Delete Meeeename";
+    string _DeleteCustomerEmail = @"deletemedeleteme@deletemeemmeemmedelete.com";
+
+    Guid _DeleteReviewId = Guid.Parse(@"BF55E347-CE4D-477A-B3B6-544EE1926FF4");
+    int _DeleteRating = 4;
+    string _DeleteComments = "I think this review stinks and I should be deleted for it....yay censorship!";
+
+    
     [Test]
-    public void CREATE()
+    public void CREATE_NEW()
     {
       var cust = Customer.CreateNew();
     }
@@ -29,18 +43,19 @@ namespace HireMe.Tests.Business
     [Test]
     public void GET()
     {
-      var cust = Customer.CreateNew();
-      cust = Customer.GetCustomer(cust.Id);
+      var cust = Customer.GetCustomer(MockDbTestData.CustId1);
+      cust = Customer.GetCustomer(MockDbTestData.CustId2);
     }
 
     [Test]
     public void UPDATE()
     {
-      var cust = Customer.CreateNew();
-      cust.Name = _CustTestName;
+      var cust = Customer.GetCustomer(MockDbTestData.CustId1);
+      cust.Name = _NewCustomerName;
+      cust.EmailAddress = _NewCustomerEmail;
       cust = (Customer)cust.Update();
       var testCust = Customer.GetCustomer(cust.Id);
-      Assert.AreEqual(_CustTestName, testCust.Name);
+      Assert.AreEqual(_NewCustomerName, testCust.Name);
     }
 
     [Test]
@@ -49,60 +64,161 @@ namespace HireMe.Tests.Business
     //[ExpectedException(typeof(ReviewDataException))]
     public void DELETE_IMMEDIATELY()
     {
-      var cust = Customer.CreateNew();
-      cust.DeleteImmediately();
-      Customer.GetCustomer(cust.Id);
+      var custDto = new CustomerDto()
+      {
+        Id = _DeleteCustomerId,
+        Name = _DeleteCustomerName,
+        EmailAddress = _DeleteCustomerEmail,
+        ReviewIds = new List<Guid>()
+        {
+          _DeleteReviewId
+        }
+      };
+
+      var reviewDto = new ReviewDto()
+      {
+        Id =_DeleteReviewId,
+        Rating = _DeleteRating,
+        Comments = _DeleteComments,
+        CustomerId = _DeleteCustomerId
+      };
+
+      //var cust = Customer.Create(custDto, false);
+      //var review = Review.Create(revDto);
+      //cust.AddChild(review);
+
+      var cust = Customer.Create(custDto, reviewDto);
+
+      cust.Update();
+
+      cust.DeleteImmediately(); //deletes children
+      try
+      {
+        Customer.GetCustomer(cust.Id);
+      }
+      catch (FaultException fe)
+      {
+        Review.GetReview(cust.ReviewIds[0]);
+        //should throw another FaultException here
+      }
     }
 
     [Test]
     public void COMMIT()
     {
-      var cust = Customer.CreateNew();
-      cust.Name = _CustTestName;
+      var cust = Customer.GetCustomer(MockDbTestData.CustId1);
+      cust.Name = _NewCustomerName;
+      cust.EmailAddress = _NewCustomerEmail;
       Customer updatedCust = (Customer)cust.Commit();
       Customer gottenCust = Customer.GetCustomer(updatedCust.Id);
-      Assert.AreEqual(cust.Name, gottenCust.Name);
-      
+      Assert.AreEqual(_NewCustomerName, gottenCust.Name);
+      Assert.AreEqual(_NewCustomerEmail, gottenCust.EmailAddress);
     }
 
     [Test]
     public void TO_DTO()
     {
-      //HACK: CustomerTests.TO_DTO: I'm not sure if I should new up or touch DB using CreateNew().  Right now, I'm touching the DB.
-      var cust = Customer.CreateNew();
-      cust.Name = _CustTestName;
-      cust.EmailAddress = _CustTestEmail;
-      cust.ReviewIds.Add(Guid.Parse(_TestReview1Id));
-      cust.ReviewIds.Add(Guid.Parse(_TestReview2Id));
-
+      var cust = Customer.GetCustomer(MockDbTestData.CustId1);
       var dto = cust.ToDto();
       Assert.AreEqual(cust.Name, dto.Name);
       Assert.AreEqual(cust.EmailAddress, dto.EmailAddress);
-      Assert.AreEqual(cust.ReviewIds[0], dto.ReviewIds[0]);
-      Assert.AreEqual(cust.ReviewIds[1], dto.ReviewIds[1]);
+      for (int i = 0; i < cust.ReviewIds.Count; i++)
+      {
+        Assert.AreEqual(cust.ReviewIds[i], dto.ReviewIds[i]);
+      }
+
+      cust = Customer.GetCustomer(MockDbTestData.CustId2);
+      dto = cust.ToDto();
+      Assert.AreEqual(cust.Name, dto.Name);
+      Assert.AreEqual(cust.EmailAddress, dto.EmailAddress);
+      for (int i = 0; i < cust.ReviewIds.Count; i++)
+      {
+        Assert.AreEqual(cust.ReviewIds[i], dto.ReviewIds[i]);
+      }
     }
 
     [Test]
     public void LOAD_FROM_DTO()
     {
-      //HACK: CustomerTests.LOAD_FROM_DTO: I'm not sure if I should new up or touch DB using CreateNew().  Right now, I'm touching the DB.
-      var dto = new CustomerDto();
-      dto.Name = _CustTestName;
-      dto.EmailAddress = _CustTestEmail;
-      var rev1 = Review.CreateNew();
-      var rev2 = Review.CreateNew();
-      
-      dto.ReviewIds.Add(rev1.Id);
-      dto.ReviewIds.Add(rev2.Id);
 
+      var dto = new CustomerDto()
+      {
+        Id = MockDbTestData.CustId1,
+        Name = MockDbTestData.CustName1,
+        EmailAddress = MockDbTestData.CustEmail1,
+        ReviewIds = new List<Guid>()
+        {
+          MockDbTestData.ReviewId1
+        }
+      };
+      
       var cust = Customer.CreateNew();
       cust.LoadFromDto(dto);
 
       Assert.AreEqual(dto.Name, cust.Name);
       Assert.AreEqual(dto.EmailAddress, cust.EmailAddress);
-      Assert.AreEqual(dto.ReviewIds[0], cust.ReviewIds[0]);
-      Assert.AreEqual(dto.ReviewIds[1], cust.ReviewIds[1]);
+      for (int i = 0; i < cust.ReviewIds.Count; i++)
+      {
+        Assert.AreEqual(cust.ReviewIds[i], dto.ReviewIds[i]);
+      }
 
+
+      dto = new CustomerDto()
+      {
+        Id = MockDbTestData.CustId2,
+        Name = MockDbTestData.CustName2,
+        EmailAddress = MockDbTestData.CustEmail2,
+        ReviewIds = new List<Guid>()
+        {
+          MockDbTestData.ReviewId2A,
+          MockDbTestData.ReviewId2B
+        }
+      };
+
+      cust = Customer.CreateNew();
+      cust.LoadFromDto(dto);
+
+      Assert.AreEqual(dto.Name, cust.Name);
+      Assert.AreEqual(dto.EmailAddress, cust.EmailAddress);
+      for (int i = 0; i < cust.ReviewIds.Count; i++)
+      {
+        Assert.AreEqual(cust.ReviewIds[i], dto.ReviewIds[i]);
+      }
+    }
+
+    [Test]
+    public void PROPERTYCHANGED_TRIGGERED()
+    {
+      int countChangesRaised = 0;
+      var cust = Customer.CreateNew();
+      cust.PropertyChanged += (s, e) =>
+        {
+          countChangesRaised++;
+        };
+      //1
+      cust.Name = "woeirhsidhfiouauuhuwuhdjfk";
+      //2
+      cust.EmailAddress = "sdfkjskdjf@dskjfsoidwhdkjfs.com";
+
+      int numPropsChanged = 2;
+      Assert.AreEqual(numPropsChanged, countChangesRaised);
+    }
+
+
+    public void CREATE_FROM_DTO()
+    {
+      CustomerDto dto = new CustomerDto() 
+      {
+        Id = MockDbTestData.CustId1,
+        Name=MockDbTestData.CustName1,
+        EmailAddress = MockDbTestData.CustEmail1, 
+        ReviewIds = new List<Guid>()
+        {
+          MockDbTestData.ReviewId1
+        }
+      };
+
+      var cust = Customer.Create(dto);
     }
   }
 }

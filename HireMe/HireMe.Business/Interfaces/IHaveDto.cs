@@ -7,7 +7,7 @@ namespace HireMe.Business.Interfaces
 {
   public interface IHaveDto<TDto>
   {
-    void LoadFromDto(TDto dto);
+    void LoadFromDto(TDto dto, bool loadChildren);
     TDto ToDto();
   }
 }

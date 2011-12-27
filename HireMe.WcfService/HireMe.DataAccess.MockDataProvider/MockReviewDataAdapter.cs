@@ -35,10 +35,23 @@ namespace HireMe.DataAccess.MockDataProvider
     }
     public ReviewDto Update(ReviewDto dto)
     {
-      var data = GetReview(dto.Id);
+      ReviewData data = null;
+      var results = from r in MockDb.Reviews
+                    where r.ReviewId == dto.Id
+                    select r;
+      if (results.Count() == 1)
+      {
+        data = results.First();
+        MockDb.Reviews.Remove(data);
+      }
+      else
+        data = new ReviewData();
+      data.ReviewId = dto.Id;
       data.Rating = dto.Rating;
       data.Comments = dto.Comments;
       data.CustomerId = dto.CustomerId;
+
+      MockDb.Reviews.Add(data);
       return dto;
     }
 
@@ -54,15 +67,7 @@ namespace HireMe.DataAccess.MockDataProvider
     }
     private ReviewData GetReview(Guid id)
     {
-      //For some reason, this is returning all reviews (ignoring where clause?)
-      //var results = from data in MockData.MockDb.Reviews
-      //              where data.ReviewId == id
-      //              select data;
-      //if (results.Count() != 1)
-      //  throw new ReviewDataException();
-
-      //return results.ElementAt(0);
-
+      
       var results = new List<ReviewData>();
       foreach (var data in MockDb.Reviews)
       {

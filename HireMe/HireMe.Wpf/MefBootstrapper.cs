@@ -42,6 +42,9 @@ namespace HireMe.Wpf
 
       //INITIALIZE SERVICES
       Services.Initialize(_Container);
+
+      //INITIALIZE DALMANAGER
+      DalManager.Initialize(_Container);
     }
 
     protected override object GetInstance(Type serviceType, string key)

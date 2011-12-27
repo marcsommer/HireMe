@@ -5,8 +5,8 @@
     <xs:sequence>
       <xs:element name="_x003C_Comments_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_CustomerId_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
       <xs:element name="_x003C_Rating_x003E_k__BackingField" type="xs:int" />
-      <xs:element name="_x003C_ReviewId_x003E_k__BackingField" type="ser:guid" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ReviewDto" nillable="true" type="tns:ReviewDto" />

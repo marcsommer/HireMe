@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using HireMe.DataAccess;
 using HireMe.Business.Interfaces;
+using Caliburn.Micro;
 
 namespace HireMe.Business
 {
@@ -13,7 +14,7 @@ namespace HireMe.Business
   /// </summary>
   /// <typeparam name="T">Type of declaring business object (e.g. Customer)</typeparam>
   /// <typeparam name="TDto">Type of declaring business object's Dto (e.g. CustomerDto)</typeparam>
-  public abstract class BusinessBase<T, TDto> : IBusinessBase<T, TDto>
+  public abstract class BusinessBase<T, TDto> : PropertyChangedBase, IBusinessBase<T, TDto>
   {
     #region Ctors and Init
 
@@ -23,7 +24,8 @@ namespace HireMe.Business
     }
 
     #endregion
-    
+
+    #region Properties 
     #region public Guid Id
 
     /// <summary>
@@ -45,16 +47,20 @@ namespace HireMe.Business
       if (value != _Id)
       {
         _Id = value;
-        MarkThisDirty();
+        if (!IsLoadingDto)
+        {
+          NotifyOfPropertyChange(() => Id);
+          MarkThisDirty();
+        }
       }
     }
 
     #endregion    //Id
-
     #region public IHaveHeirarchy Parent
 
     /// <summary>
-    /// Parent of this business object, if applicable.
+    /// Parent of this business object, if applicable.  To avoid infinite recursion,
+    /// leave this to be set by the parent object.
     /// </summary>
     public IHaveHeirarchy Parent
     {
@@ -78,10 +84,12 @@ namespace HireMe.Business
     }
 
     #endregion    //Parent
-
     #region public IList<IHaveHeirarchy> Children
     /// <summary>
-    /// Child objects that this object is parent of.
+    /// Child objects that this object is parent of.  NOTE WELL:
+    /// Be sure to use the AddChild method to maintain metastate information.  Also,
+    /// overriding AddChild is the place to add appropriate child ids in their corresponding
+    /// id lists.
     /// </summary>
     public IList<IHaveHeirarchy> Children
     {
@@ -104,7 +112,8 @@ namespace HireMe.Business
       }
     }
     #endregion    //Children
-
+    #endregion
+    
     #region Meta State Properties
     public bool IsDirty
     {
@@ -133,13 +142,46 @@ namespace HireMe.Business
       //if we've made it here, then this isn't dirty and no children are dirty. 
       return false;
     }
-    public bool ThisIsDirty { get; private set; }
+    #region public bool ThisIsDirty
+    /// <summary>
+    /// If true, this instance is modified (not children)
+    /// </summary>
+    public bool ThisIsDirty
+    {
+      get { return GetThisIsDirty(); }
+      protected set { SetThisIsDirty(value); }
+    }
+
+    protected bool _ThisIsDirty;
+    protected virtual bool GetThisIsDirty()
+    {
+      return _ThisIsDirty;
+    }
+    protected virtual void SetThisIsDirty(bool value)
+    {
+      if (value != _ThisIsDirty)
+      {
+        _ThisIsDirty = value;
+        if (!IsLoadingDto)
+        {
+          NotifyOfPropertyChange(() => ThisIsDirty);
+          MarkThisDirty();
+        }
+      }
+    }
+    #endregion    //ThisIsDirty
     public bool IsMarkedForDeletion { get; set; }
     public bool IsLoadingDto { get; set; }
     public bool HasChildren
     {
       get { return (Children.Count > 0); }
     }
+    /// <summary>
+    /// Implementations should return 'true' if all Ids correspond to actively loaded children ids, 
+    /// 'false' if the ids to match up, and 'null' if there are no ids to load (ie this object has no child ids 
+    /// to load/check if loaded).
+    /// </summary>
+    public bool? ChildrenAreLoaded { get { return GetChildrenAreLoaded(); } }
     public bool UpdateStarted { get; protected set; }
     public bool DeleteStarted { get; protected set; }
     #endregion
@@ -170,6 +212,7 @@ namespace HireMe.Business
     {
       _Id = id;
     }
+    protected abstract bool? GetChildrenAreLoaded();
     #endregion
 
     #region IHaveDto Methods
@@ -177,12 +220,12 @@ namespace HireMe.Business
     /// Wraps LoadFromDtoImpl with try/f Begin/EndDtoLoad.
     /// </summary>
     /// <param name="dto"></param>
-    public virtual void LoadFromDto(TDto dto)
+    public virtual void LoadFromDto(TDto dto, bool loadChildren = true)
     {
       BeginLoadFromDto();
       try
       {
-        LoadFromDtoImpl(dto);
+        LoadFromDtoImpl(dto, loadChildren);
       }
       finally
       {
@@ -216,7 +259,7 @@ namespace HireMe.Business
     /// to wrap this in a Begin/EndDtoLoad block (this is already done for you).
     /// </summary>
     /// <param name="dto">Your business class's Dto</param>
-    protected abstract void LoadFromDtoImpl(TDto dto);
+    protected abstract void LoadFromDtoImpl(TDto dto, bool loadChildren = true);
     #endregion
 
     #region Data Access
@@ -245,7 +288,7 @@ namespace HireMe.Business
         return this;
       }
       else
-        return Update(commitChildren);
+        return (BusinessBase<T, TDto>)Update(commitChildren);
     }
     /// <summary>
     /// Marks business object for deletion, but does not happen until Commit() is called.
@@ -292,7 +335,7 @@ namespace HireMe.Business
     /// first.
     /// </summary>
     /// <returns></returns>
-    public BusinessBase<T, TDto> Update(bool updateChildren = true)
+    public IBusinessBase Update(bool updateChildren = true)
     {
       UpdateStarted = true;
       try
@@ -313,17 +356,19 @@ namespace HireMe.Business
     /// <summary>
     /// Use this when adding children to make sure meta state is properly maintained.
     /// Adds child to Children, marks this as dirty, sets child.parent to this 
-    /// (child can only have one parent).
+    /// (child can only have one parent).  Override this to update appropriate Id lists
+    /// in descending objects.
     /// </summary>
     /// <param name="child">child to add to this object.</param>
     /// <exception cref="ArgumentException">child.Parent must be null</exception>
-    public void AddChild(IHaveHeirarchy child)
+    public virtual void AddChild(IHaveHeirarchy child)
     {
-      if (child.Parent != null)
+      if (child.Parent != null && child.Parent != this)
         throw new ArgumentException();
 
       Children.Add(child);
-      MarkThisDirty();
+      if (!IsLoadingDto)
+        MarkThisDirty();
       child.SetParent(this);
     }
     /// <summary>
@@ -336,13 +381,14 @@ namespace HireMe.Business
         List<IHaveHeirarchy> newChildren = new List<IHaveHeirarchy>();
         foreach (var child in Children)
         {
-          var updateableChild = child as IUpdateable<T, TDto>;
+          var updateableChild = child as IUpdateable;
           if (updateableChild != null && !updateableChild.UpdateStarted) //avoid infinite recursion
             newChildren.Add(updateableChild.Update(true));
         }
         _Children = newChildren;
       }
     }
+    public abstract void LoadChildren();
     /// <summary>
     /// Deletes all children AND their children recursively.
     /// </summary>
