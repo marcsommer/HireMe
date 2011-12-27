@@ -35,5 +35,18 @@ namespace HireMe.Wpf.ViewModels
     {
       NotifyOfPropertyChange(() => Customer);
     }
+
+    public void LoadReviews()
+    {
+      Items.Clear();
+      foreach (var child in Customer.Children)
+      {
+        var review = child as Review;
+        if (review != null)
+        {
+          Items.Add(new ReviewViewModel() { Review = review });
+        }
+      }
+    }
   }
 }

@@ -19,7 +19,7 @@
       <Border BorderBrush="Pink" 
               BorderThickness="1"
               Margin="3">
-        <ListBox x:Name="Items" />
+        <ListBox x:Name="Items" IsEnabled="False" />
         <!--ReviewItemViewModel-->
       </Border>
     </StackPanel>

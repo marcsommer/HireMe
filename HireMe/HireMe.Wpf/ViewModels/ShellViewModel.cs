@@ -19,6 +19,7 @@ namespace HireMe.Wpf.ViewModels
       {
         var vm = Services.Container.GetExportedValue<CustomerViewModel>();
         vm.Customer = cust;
+        vm.LoadReviews();
         Items.Add(vm);
       }
       //var results = from c in allCustomers
