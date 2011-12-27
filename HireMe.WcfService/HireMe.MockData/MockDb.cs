@@ -76,7 +76,7 @@ namespace HireMe.MockData
     
     public static Guid ReviewId2B = Guid.Parse("A201F967-659B-45C1-91FA-306F165E3511");
     public static int ReviewRating2B = 5;
-    public static string ReviewComments2B = "I LOVE Verizon SO MUCH, I voted TWICE!!!!!????!!!!!??!!!??!?!?!??!?!?";
+    public static string ReviewComments2B = "I LOVE Verizon SO MUCH, I voted TWICE!?! No, but in the future, reviews will be related to products so one-to-many relationship en ce moment.";
 
     public static List<CustomerData> Customers { get; set; }
     public static List<ReviewData> Reviews { get; set; }

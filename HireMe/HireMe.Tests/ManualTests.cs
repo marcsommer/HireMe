@@ -9,7 +9,8 @@ namespace HireMe.Tests
   {
     internal ManualTests()
     {
-      //Hack: NUnit tests are failing for proxy.  It is unable to instantiate the CustomerDalClient class,...
+      #region Getting NUnit to work notes
+      //NUnit tests are failing for proxy.  It is unable to instantiate the CustomerDalClient class,...
       //as it isn't able to locate the endpoint.  I've tried changing contract name, but that wasn't the problem.  
       //The app.config still isn't being copied to the right place for the NUnit tool (I only have VS 2010 Express, 
       //so I can't run NUnit integrated into VS).  I had to set it up as an external tool that starts its own process 
@@ -24,7 +25,8 @@ namespace HireMe.Tests
       //I finally came across http://blogs.msdn.com/b/josealmeida/archive/2004/05/31/loading-config-files-in-nunit.aspx 
       //where they explain that you can run //var location = AppDomain.CurrentDomain.SetupInformation.ConfigurationFile; to 
       //find out where _exactly_(location AND filename) NUnit is looking for the config file.  I copied over the WcfClient.app.config
-      //file to this location "HireMe.Tests.config" in the "HireMe.Tests.csproj" directory and it works fine.  Wee dogey.
+      //file to this location "HireMe.Tests.config" in the "HireMe.Tests.csproj" directory and it works fine.  Wee dogey. 
+      #endregion
 
       //I am still using this class when I want to step through code, as external NUnit tool does not allow me to do this.
 
@@ -56,8 +58,6 @@ namespace HireMe.Tests
       var tests = new CustomerDalProxyTests();
       tests.CREATE_PROXY_ITSELF();
     }
-
-    
 
     private void RunIBusinessTests(IBusinessTests tests)
     {
