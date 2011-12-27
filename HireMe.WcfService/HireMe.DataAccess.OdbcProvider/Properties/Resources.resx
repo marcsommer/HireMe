@@ -135,6 +135,12 @@
   <data name="DefaultCustomerName" xml:space="preserve">
     <value>Anonymous</value>
   </data>
+  <data name="DefaultReviewComments" xml:space="preserve">
+    <value>No Comment Entered.</value>
+  </data>
+  <data name="DefaultReviewRating" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="EmailAddressColumn" xml:space="preserve">
     <value>EmailAddress</value>
   </data>
@@ -143,5 +149,20 @@
   </data>
   <data name="NameColumn" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="ReviewCommentsColumn" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="ReviewCustomerIdColumn" xml:space="preserve">
+    <value>CustomerId</value>
+  </data>
+  <data name="ReviewIdColumn" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="ReviewRatingColumn" xml:space="preserve">
+    <value>Rating</value>
+  </data>
+  <data name="ReviewTable" xml:space="preserve">
+    <value>dbo.tblReviews</value>
   </data>
 </root>

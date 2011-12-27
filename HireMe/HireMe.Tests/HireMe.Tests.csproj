@@ -71,10 +71,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Business\ReviewTests.cs" />
+    <Compile Include="BusinessMockDb\ReviewMockDbAdapterTests.cs" />
+    <Compile Include="BusinessOdbc\ReviewOdbcAdapterTests.cs" />
+    <Compile Include="BusinessOdbc\CustomerOdbcAdapterTests.cs" />
     <Compile Include="IBusinessTests.cs" />
     <Compile Include="SetupTeardownTests.cs" />
-    <Compile Include="Business\CustomerTests.cs" />
+    <Compile Include="BusinessMockDb\CustomerMockDbAdapterTests.cs" />
     <Compile Include="ManualTests.cs" />
     <Compile Include="MockDbTestData.cs" />
     <Compile Include="WcfClient\ReviewDalProxyTests.cs" />

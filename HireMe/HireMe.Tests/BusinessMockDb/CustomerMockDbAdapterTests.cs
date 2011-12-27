@@ -11,7 +11,7 @@ namespace HireMe.Tests
 {
   //TODO: Finish fleshing out customerTests to handle more complex scenarios
   [TestFixture]
-  public class CustomerTests : IBusinessTests
+  public class CustomerMockDbAdapterTests : IBusinessTests
   {
     Guid _NewCustomerId = Guid.Parse(@"73D3252A-036D-4D8B-9061-BEFB6805F657");
     string _NewCustomerName = "Newcome Customerm";

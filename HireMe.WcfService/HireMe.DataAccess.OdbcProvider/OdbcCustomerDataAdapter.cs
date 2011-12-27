@@ -12,6 +12,7 @@ namespace HireMe.DataAccess.OdbcProvider
   /// Conventions: Throws exceptions if not found
   /// </summary>
   [Export(typeof(ICustomerDal))]
+  [PartCreationPolicy(System.ComponentModel.Composition.CreationPolicy.Shared)]
   public class OdbcCustomerDataAdapter : ICustomerDal
   {
     public CustomerDto Create()

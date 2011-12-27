@@ -115,6 +115,24 @@ namespace HireMe.DataAccess.OdbcProvider.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Comment Entered..
+        /// </summary>
+        internal static string DefaultReviewComments {
+            get {
+                return ResourceManager.GetString("DefaultReviewComments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 3.
+        /// </summary>
+        internal static string DefaultReviewRating {
+            get {
+                return ResourceManager.GetString("DefaultReviewRating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to EmailAddress.
         /// </summary>
         internal static string EmailAddressColumn {
@@ -138,6 +156,51 @@ namespace HireMe.DataAccess.OdbcProvider.Properties {
         internal static string NameColumn {
             get {
                 return ResourceManager.GetString("NameColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comments.
+        /// </summary>
+        internal static string ReviewCommentsColumn {
+            get {
+                return ResourceManager.GetString("ReviewCommentsColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CustomerId.
+        /// </summary>
+        internal static string ReviewCustomerIdColumn {
+            get {
+                return ResourceManager.GetString("ReviewCustomerIdColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Id.
+        /// </summary>
+        internal static string ReviewIdColumn {
+            get {
+                return ResourceManager.GetString("ReviewIdColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rating.
+        /// </summary>
+        internal static string ReviewRatingColumn {
+            get {
+                return ResourceManager.GetString("ReviewRatingColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to dbo.tblReviews.
+        /// </summary>
+        internal static string ReviewTable {
+            get {
+                return ResourceManager.GetString("ReviewTable", resourceCulture);
             }
         }
     }

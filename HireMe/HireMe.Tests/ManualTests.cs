@@ -34,8 +34,8 @@ namespace HireMe.Tests
 
       try
       {
-        //RunIBusinessTests(new CustomerTests());
-        RunIBusinessTests(new ReviewTests());
+        RunIBusinessTests(new CustomerMockDbAdapterTests());
+        RunIBusinessTests(new ReviewMockDbAdapterTests());
         //RunProxyTests();
         //RunViewModelTests();
       }
@@ -61,14 +61,14 @@ namespace HireMe.Tests
 
     private void RunIBusinessTests(IBusinessTests tests)
     {
-      //tests.CREATE_NEW();
+      tests.CREATE_NEW();
       tests.CREATE_FROM_DTO();
-      //tests.GET();
-      //tests.DELETE_IMMEDIATELY();
-      //tests.UPDATE();
-      //tests.COMMIT();
-      //tests.LOAD_FROM_DTO();
-      //tests.TO_DTO();
+      tests.GET();
+      tests.DELETE_IMMEDIATELY();
+      tests.UPDATE();
+      tests.COMMIT();
+      tests.LOAD_FROM_DTO();
+      tests.TO_DTO();
     }
   }
 }

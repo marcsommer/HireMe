@@ -1,54 +1,376 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\HireMe.Tests.csproj" total="20" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2011-12-26" time="18:10:59">
+<test-results name="C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\HireMe.Tests.csproj" total="20" errors="13" failures="2" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2011-12-26" time="20:54:14">
   <environment nunit-version="2.5.10.11092" clr-version="2.0.50727.5448" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests" machine-name="USER-PC" user="User" user-domain="User-PC" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Project" name="C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\HireMe.Tests.csproj" executed="True" result="Success" success="True" time="27.543" asserts="0">
+  <test-suite type="Project" name="C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\HireMe.Tests.csproj" executed="True" result="Failure" success="False" time="10.071" asserts="0">
     <results>
-      <test-suite type="Assembly" name="C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\bin\Debug\HireMe.Tests.exe" executed="True" result="Success" success="True" time="27.535" asserts="0">
+      <test-suite type="Assembly" name="C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\bin\Debug\HireMe.Tests.exe" executed="True" result="Failure" success="False" time="10.064" asserts="0">
         <results>
-          <test-suite type="Namespace" name="HireMe" executed="True" result="Success" success="True" time="27.534" asserts="0">
+          <test-suite type="Namespace" name="HireMe" executed="True" result="Failure" success="False" time="10.062" asserts="0">
             <results>
-              <test-suite type="SetUpFixture" name="Tests" executed="True" result="Success" success="True" time="27.529" asserts="0">
+              <test-suite type="SetUpFixture" name="Tests" executed="True" result="Failure" success="False" time="10.059" asserts="0">
                 <results>
-                  <test-suite type="TestFixture" name="CustomerDalProxyTests" executed="True" result="Success" success="True" time="0.018" asserts="0">
+                  <test-suite type="TestFixture" name="CustomerDalProxyTests" executed="True" result="Success" success="True" time="0.026" asserts="0">
                     <results>
                       <test-case name="HireMe.Tests.CustomerDalProxyTests.CREATE_PROXY_ITSELF" executed="True" result="Success" success="True" time="0.009" asserts="0" />
                     </results>
                   </test-suite>
-                  <test-suite type="TestFixture" name="CustomerTests" executed="True" result="Success" success="True" time="25.236" asserts="0">
+                  <test-suite type="TestFixture" name="CustomerTests" executed="True" result="Failure" success="False" time="8.713" asserts="0">
                     <results>
-                      <test-case name="HireMe.Tests.CustomerTests.COMMIT" executed="True" result="Success" success="True" time="23.381" asserts="2" />
-                      <test-case name="HireMe.Tests.CustomerTests.CREATE_NEW" executed="True" result="Success" success="True" time="0.008" asserts="0" />
-                      <test-case name="HireMe.Tests.CustomerTests.DELETE_IMMEDIATELY" executed="True" result="Success" success="True" time="1.701" asserts="0" />
-                      <test-case name="HireMe.Tests.CustomerTests.GET" executed="True" result="Success" success="True" time="0.025" asserts="0" />
-                      <test-case name="HireMe.Tests.CustomerTests.LOAD_FROM_DTO" executed="True" result="Success" success="True" time="0.022" asserts="7" />
-                      <test-case name="HireMe.Tests.CustomerTests.PROPERTYCHANGED_TRIGGERED" executed="True" result="Success" success="True" time="0.008" asserts="1" />
-                      <test-case name="HireMe.Tests.CustomerTests.TO_DTO" executed="True" result="Success" success="True" time="0.022" asserts="7" />
-                      <test-case name="HireMe.Tests.CustomerTests.UPDATE" executed="True" result="Success" success="True" time="0.027" asserts="1" />
+                      <test-case name="HireMe.Tests.CustomerTests.COMMIT" executed="True" result="Error" success="False" time="4.556" asserts="0">
+                        <failure>
+                          <message><![CDATA[System.ServiceModel.FaultException : The creator of this fault did not specify a Reason.]]></message>
+                          <stack-trace><![CDATA[
+Server stack trace:
+at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]:
+at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+at HireMe.WcfClient.WcfServices.Customer.ICustomerDal.Get(Guid id)
+at HireMe.WcfClient.WcfServices.Customer.CustomerDalClient.Get(Guid id) in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\Service References\WcfServices.Customer\Reference.cs:line 66
+at HireMe.WcfClient.CustomerDalProxy.Get(Guid id) in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\CustomerDalProxy.cs:line 33
+at HireMe.Business.Customer.GetCustomer(Guid id) in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Business\Models\Customer.cs:line 173
+at HireMe.Tests.CustomerTests.COMMIT() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\Business\CustomerTests.cs:line 109
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="HireMe.Tests.CustomerTests.CREATE_NEW" executed="True" result="Success" success="True" time="0.220" asserts="0" />
+                      <test-case name="HireMe.Tests.CustomerTests.DELETE_IMMEDIATELY" executed="True" result="Failure" success="False" time="0.867" asserts="0">
+                        <failure>
+                          <message><![CDATA[An unexpected exception type was thrown
+Expected: System.ServiceModel.FaultException
+ but was: System.ServiceModel.FaultException`1[[System.ServiceModel.ExceptionDetail, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]] : ERROR [42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Incorrect syntax near 'CustomerId'.]]></message>
+                          <stack-trace><![CDATA[
+Server stack trace:
+at System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]:
+at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+at HireMe.WcfClient.WcfServices.Review.IReviewDal.Update(ReviewDto dto)
+at HireMe.WcfClient.WcfServices.Review.ReviewDalClient.Update(ReviewDto dto) in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\Service References\WcfServices.Review\Reference.cs:line 74
+at HireMe.WcfClient.ReviewDalProxy.Update(ReviewDto dto) in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\ReviewDalProxy.cs:line 40
+at HireMe.Business.Review.UpdateImpl() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Business\Models\Review.cs:line 155
+at HireMe.Business.BusinessBase`2.Update(Boolean updateChildren) in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Business\BusinessBase.cs:line 345
+at HireMe.Business.Review.Create(ReviewDto dto) in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Business\Models\Review.cs:line 132
+at HireMe.Business.Customer.Create(CustomerDto custDto, ReviewDto[] reviewDtos) in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Business\Models\Customer.cs:line 158
+at HireMe.Tests.CustomerTests.DELETE_IMMEDIATELY() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\Business\CustomerTests.cs:line 90
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="HireMe.Tests.CustomerTests.GET" executed="True" result="Error" success="False" time="1.076" asserts="0">
+                        <failure>
+                          <message><![CDATA[System.ServiceModel.FaultException : The creator of this fault did not specify a Reason.]]></message>
+                          <stack-trace><![CDATA[
+Server stack trace:
+at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]:
+at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+at HireMe.WcfClient.WcfServices.Customer.ICustomerDal.Get(Guid id)
+at HireMe.WcfClient.WcfServices.Customer.CustomerDalClient.Get(Guid id) in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\Service References\WcfServices.Customer\Reference.cs:line 66
+at HireMe.WcfClient.CustomerDalProxy.Get(Guid id) in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\CustomerDalProxy.cs:line 33
+at HireMe.Business.Customer.GetCustomer(Guid id) in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Business\Models\Customer.cs:line 173
+at HireMe.Tests.CustomerTests.GET() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\Business\CustomerTests.cs:line 46
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="HireMe.Tests.CustomerTests.LOAD_FROM_DTO" executed="True" result="Error" success="False" time="0.042" asserts="0">
+                        <failure>
+                          <message><![CDATA[System.ServiceModel.CommunicationObjectFaultedException : The communication object, System.ServiceModel.Channels.ServiceChannel, cannot be used for communication because it is in the Faulted state.]]></message>
+                          <stack-trace><![CDATA[
+Server stack trace:
+at System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrNotOpen()
+at System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]:
+at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+at HireMe.WcfClient.WcfServices.Review.IReviewDal.Get(Guid id)
+at HireMe.WcfClient.WcfServices.Review.ReviewDalClient.Get(Guid id) in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\Service References\WcfServices.Review\Reference.cs:line 66
+at HireMe.WcfClient.ReviewDalProxy.Get(Guid id) in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\ReviewDalProxy.cs:line 32
+at HireMe.Business.Review.GetReview(Guid id) in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Business\Models\Review.cs:line 138
+at HireMe.Business.Customer.LoadFromDtoImpl(CustomerDto dto, Boolean loadChildren) in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Business\Models\Customer.cs:line 237
+at HireMe.Business.BusinessBase`2.LoadFromDto(TDto dto, Boolean loadChildren) in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Business\BusinessBase.cs:line 228
+at HireMe.Tests.CustomerTests.LOAD_FROM_DTO() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\Business\CustomerTests.cs:line 156
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="HireMe.Tests.CustomerTests.PROPERTYCHANGED_TRIGGERED" executed="True" result="Success" success="True" time="0.015" asserts="1" />
+                      <test-case name="HireMe.Tests.CustomerTests.TO_DTO" executed="True" result="Error" success="False" time="0.889" asserts="0">
+                        <failure>
+                          <message><![CDATA[System.ServiceModel.FaultException : The creator of this fault did not specify a Reason.]]></message>
+                          <stack-trace><![CDATA[
+Server stack trace:
+at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]:
+at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+at HireMe.WcfClient.WcfServices.Customer.ICustomerDal.Get(Guid id)
+at HireMe.WcfClient.WcfServices.Customer.CustomerDalClient.Get(Guid id) in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\Service References\WcfServices.Customer\Reference.cs:line 66
+at HireMe.WcfClient.CustomerDalProxy.Get(Guid id) in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\CustomerDalProxy.cs:line 33
+at HireMe.Business.Customer.GetCustomer(Guid id) in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Business\Models\Customer.cs:line 173
+at HireMe.Tests.CustomerTests.TO_DTO() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\Business\CustomerTests.cs:line 121
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="HireMe.Tests.CustomerTests.UPDATE" executed="True" result="Error" success="False" time="0.804" asserts="0">
+                        <failure>
+                          <message><![CDATA[System.ServiceModel.FaultException : The creator of this fault did not specify a Reason.]]></message>
+                          <stack-trace><![CDATA[
+Server stack trace:
+at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]:
+at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+at HireMe.WcfClient.WcfServices.Customer.ICustomerDal.Get(Guid id)
+at HireMe.WcfClient.WcfServices.Customer.CustomerDalClient.Get(Guid id) in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\Service References\WcfServices.Customer\Reference.cs:line 66
+at HireMe.WcfClient.CustomerDalProxy.Get(Guid id) in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\CustomerDalProxy.cs:line 33
+at HireMe.Business.Customer.GetCustomer(Guid id) in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Business\Models\Customer.cs:line 173
+at HireMe.Tests.CustomerTests.UPDATE() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\Business\CustomerTests.cs:line 53
+]]></stack-trace>
+                        </failure>
+                      </test-case>
                     </results>
                   </test-suite>
-                  <test-suite type="TestFixture" name="CustomerViewModelTests" executed="True" result="Success" success="True" time="0.037" asserts="0">
+                  <test-suite type="TestFixture" name="CustomerViewModelTests" executed="True" result="Success" success="True" time="0.064" asserts="0">
                     <results>
-                      <test-case name="HireMe.Tests.CustomerViewModelTests.CUSTOMER_NAME_CHANGE_PROPAGATES_PROPERTY_CHANGED_TO_VIEWMODEL" executed="True" result="Success" success="True" time="0.035" asserts="1" />
+                      <test-case name="HireMe.Tests.CustomerViewModelTests.CUSTOMER_NAME_CHANGE_PROPAGATES_PROPERTY_CHANGED_TO_VIEWMODEL" executed="True" result="Success" success="True" time="0.062" asserts="1" />
                     </results>
                   </test-suite>
                   <test-suite type="TestFixture" name="ReviewDalProxyTests" executed="True" result="Success" success="True" time="0.004" asserts="0">
                     <results>
-                      <test-case name="HireMe.Tests.ReviewDalProxyTests.CREATE_PROXY_ITSELF" executed="True" result="Success" success="True" time="0.002" asserts="0" />
+                      <test-case name="HireMe.Tests.ReviewDalProxyTests.CREATE_PROXY_ITSELF" executed="True" result="Success" success="True" time="0.001" asserts="0" />
                     </results>
                   </test-suite>
-                  <test-suite type="TestFixture" name="ReviewTests" executed="True" result="Success" success="True" time="1.054" asserts="0">
+                  <test-suite type="TestFixture" name="ReviewTests" executed="True" result="Failure" success="False" time="0.137" asserts="0">
                     <results>
-                      <test-case name="HireMe.Tests.ReviewTests.COMMIT" executed="True" result="Success" success="True" time="0.017" asserts="1" />
-                      <test-case name="HireMe.Tests.ReviewTests.CREATE_FROM_DTO" executed="True" result="Success" success="True" time="0.005" asserts="0" />
-                      <test-case name="HireMe.Tests.ReviewTests.CREATE_NEW" executed="True" result="Success" success="True" time="0.005" asserts="0" />
-                      <test-case name="HireMe.Tests.ReviewTests.DELETE_IMMEDIATELY" executed="True" result="Success" success="True" time="0.935" asserts="0" />
-                      <test-case name="HireMe.Tests.ReviewTests.GET" executed="True" result="Success" success="True" time="0.009" asserts="0" />
-                      <test-case name="HireMe.Tests.ReviewTests.LOAD_FROM_DTO" executed="True" result="Success" success="True" time="0.010" asserts="3" />
-                      <test-case name="HireMe.Tests.ReviewTests.PROPERTYCHANGED_TRIGGERED" executed="True" result="Success" success="True" time="0.005" asserts="1" />
-                      <test-case name="HireMe.Tests.ReviewTests.TO_DTO" executed="True" result="Success" success="True" time="0.005" asserts="3" />
-                      <test-case name="HireMe.Tests.ReviewTests.UPDATE" executed="True" result="Success" success="True" time="0.011" asserts="0" />
+                      <test-case name="HireMe.Tests.ReviewTests.COMMIT" executed="True" result="Error" success="False" time="0.002" asserts="0">
+                        <failure>
+                          <message><![CDATA[System.ServiceModel.CommunicationObjectFaultedException : The communication object, System.ServiceModel.Channels.ServiceChannel, cannot be used for communication because it is in the Faulted state.]]></message>
+                          <stack-trace><![CDATA[
+Server stack trace:
+at System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrNotOpen()
+at System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]:
+at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+at HireMe.WcfClient.WcfServices.Review.IReviewDal.Create()
+at HireMe.WcfClient.WcfServices.Review.ReviewDalClient.Create() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\Service References\WcfServices.Review\Reference.cs:line 62
+at HireMe.WcfClient.ReviewDalProxy.Create() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\ReviewDalProxy.cs:line 22
+at HireMe.Business.Review.CreateNew() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Business\Models\Review.cs:line 124
+at HireMe.Tests.ReviewTests.COMMIT() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\Business\ReviewTests.cs:line 56
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="HireMe.Tests.ReviewTests.CREATE_FROM_DTO" executed="True" result="Error" success="False" time="0.002" asserts="0">
+                        <failure>
+                          <message><![CDATA[System.ServiceModel.CommunicationObjectFaultedException : The communication object, System.ServiceModel.Channels.ServiceChannel, cannot be used for communication because it is in the Faulted state.]]></message>
+                          <stack-trace><![CDATA[
+Server stack trace:
+at System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrNotOpen()
+at System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]:
+at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+at HireMe.WcfClient.WcfServices.Review.IReviewDal.Update(ReviewDto dto)
+at HireMe.WcfClient.WcfServices.Review.ReviewDalClient.Update(ReviewDto dto) in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\Service References\WcfServices.Review\Reference.cs:line 74
+at HireMe.WcfClient.ReviewDalProxy.Update(ReviewDto dto) in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\ReviewDalProxy.cs:line 40
+at HireMe.Business.Review.UpdateImpl() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Business\Models\Review.cs:line 155
+at HireMe.Business.BusinessBase`2.Update(Boolean updateChildren) in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Business\BusinessBase.cs:line 345
+at HireMe.Business.Review.Create(ReviewDto dto) in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Business\Models\Review.cs:line 132
+at HireMe.Tests.ReviewTests.CREATE_FROM_DTO() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\Business\ReviewTests.cs:line 128
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="HireMe.Tests.ReviewTests.CREATE_NEW" executed="True" result="Error" success="False" time="0.001" asserts="0">
+                        <failure>
+                          <message><![CDATA[System.ServiceModel.CommunicationObjectFaultedException : The communication object, System.ServiceModel.Channels.ServiceChannel, cannot be used for communication because it is in the Faulted state.]]></message>
+                          <stack-trace><![CDATA[
+Server stack trace:
+at System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrNotOpen()
+at System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]:
+at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+at HireMe.WcfClient.WcfServices.Review.IReviewDal.Create()
+at HireMe.WcfClient.WcfServices.Review.ReviewDalClient.Create() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\Service References\WcfServices.Review\Reference.cs:line 62
+at HireMe.WcfClient.ReviewDalProxy.Create() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\ReviewDalProxy.cs:line 22
+at HireMe.Business.Review.CreateNew() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Business\Models\Review.cs:line 124
+at HireMe.Tests.ReviewTests.CREATE_NEW() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\Business\ReviewTests.cs:line 24
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="HireMe.Tests.ReviewTests.DELETE_IMMEDIATELY" executed="True" result="Failure" success="False" time="0.001" asserts="0">
+                        <failure>
+                          <message><![CDATA[An unexpected exception type was thrown
+Expected: System.ServiceModel.FaultException
+ but was: System.ServiceModel.CommunicationObjectFaultedException : The communication object, System.ServiceModel.Channels.ServiceChannel, cannot be used for communication because it is in the Faulted state.]]></message>
+                          <stack-trace><![CDATA[
+Server stack trace:
+at System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrNotOpen()
+at System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]:
+at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+at HireMe.WcfClient.WcfServices.Review.IReviewDal.Create()
+at HireMe.WcfClient.WcfServices.Review.ReviewDalClient.Create() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\Service References\WcfServices.Review\Reference.cs:line 62
+at HireMe.WcfClient.ReviewDalProxy.Create() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\ReviewDalProxy.cs:line 22
+at HireMe.Business.Review.CreateNew() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Business\Models\Review.cs:line 124
+at HireMe.Tests.ReviewTests.DELETE_IMMEDIATELY() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\Business\ReviewTests.cs:line 48
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="HireMe.Tests.ReviewTests.GET" executed="True" result="Error" success="False" time="0.001" asserts="0">
+                        <failure>
+                          <message><![CDATA[System.ServiceModel.CommunicationObjectFaultedException : The communication object, System.ServiceModel.Channels.ServiceChannel, cannot be used for communication because it is in the Faulted state.]]></message>
+                          <stack-trace><![CDATA[
+Server stack trace:
+at System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrNotOpen()
+at System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]:
+at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+at HireMe.WcfClient.WcfServices.Review.IReviewDal.Create()
+at HireMe.WcfClient.WcfServices.Review.ReviewDalClient.Create() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\Service References\WcfServices.Review\Reference.cs:line 62
+at HireMe.WcfClient.ReviewDalProxy.Create() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\ReviewDalProxy.cs:line 22
+at HireMe.Business.Review.CreateNew() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Business\Models\Review.cs:line 124
+at HireMe.Tests.ReviewTests.GET() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\Business\ReviewTests.cs:line 30
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="HireMe.Tests.ReviewTests.LOAD_FROM_DTO" executed="True" result="Error" success="False" time="0.009" asserts="0">
+                        <failure>
+                          <message><![CDATA[System.ServiceModel.CommunicationObjectFaultedException : The communication object, System.ServiceModel.Channels.ServiceChannel, cannot be used for communication because it is in the Faulted state.]]></message>
+                          <stack-trace><![CDATA[
+Server stack trace:
+at System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrNotOpen()
+at System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]:
+at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+at HireMe.WcfClient.WcfServices.Review.IReviewDal.Create()
+at HireMe.WcfClient.WcfServices.Review.ReviewDalClient.Create() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\Service References\WcfServices.Review\Reference.cs:line 62
+at HireMe.WcfClient.ReviewDalProxy.Create() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\ReviewDalProxy.cs:line 22
+at HireMe.Business.Review.CreateNew() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Business\Models\Review.cs:line 124
+at HireMe.Tests.ReviewTests.LOAD_FROM_DTO() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\Business\ReviewTests.cs:line 89
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="HireMe.Tests.ReviewTests.PROPERTYCHANGED_TRIGGERED" executed="True" result="Error" success="False" time="0.002" asserts="0">
+                        <failure>
+                          <message><![CDATA[System.ServiceModel.CommunicationObjectFaultedException : The communication object, System.ServiceModel.Channels.ServiceChannel, cannot be used for communication because it is in the Faulted state.]]></message>
+                          <stack-trace><![CDATA[
+Server stack trace:
+at System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrNotOpen()
+at System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]:
+at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+at HireMe.WcfClient.WcfServices.Review.IReviewDal.Create()
+at HireMe.WcfClient.WcfServices.Review.ReviewDalClient.Create() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\Service References\WcfServices.Review\Reference.cs:line 62
+at HireMe.WcfClient.ReviewDalProxy.Create() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\ReviewDalProxy.cs:line 22
+at HireMe.Business.Review.CreateNew() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Business\Models\Review.cs:line 124
+at HireMe.Tests.ReviewTests.PROPERTYCHANGED_TRIGGERED() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\Business\ReviewTests.cs:line 102
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="HireMe.Tests.ReviewTests.TO_DTO" executed="True" result="Error" success="False" time="0.002" asserts="0">
+                        <failure>
+                          <message><![CDATA[System.ServiceModel.CommunicationObjectFaultedException : The communication object, System.ServiceModel.Channels.ServiceChannel, cannot be used for communication because it is in the Faulted state.]]></message>
+                          <stack-trace><![CDATA[
+Server stack trace:
+at System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrNotOpen()
+at System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]:
+at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+at HireMe.WcfClient.WcfServices.Review.IReviewDal.Create()
+at HireMe.WcfClient.WcfServices.Review.ReviewDalClient.Create() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\Service References\WcfServices.Review\Reference.cs:line 62
+at HireMe.WcfClient.ReviewDalProxy.Create() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\ReviewDalProxy.cs:line 22
+at HireMe.Business.Review.CreateNew() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Business\Models\Review.cs:line 124
+at HireMe.Tests.ReviewTests.TO_DTO() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\Business\ReviewTests.cs:line 67
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="HireMe.Tests.ReviewTests.UPDATE" executed="True" result="Error" success="False" time="0.001" asserts="0">
+                        <failure>
+                          <message><![CDATA[System.ServiceModel.CommunicationObjectFaultedException : The communication object, System.ServiceModel.Channels.ServiceChannel, cannot be used for communication because it is in the Faulted state.]]></message>
+                          <stack-trace><![CDATA[
+Server stack trace:
+at System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrNotOpen()
+at System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]:
+at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+at HireMe.WcfClient.WcfServices.Review.IReviewDal.Create()
+at HireMe.WcfClient.WcfServices.Review.ReviewDalClient.Create() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\Service References\WcfServices.Review\Reference.cs:line 62
+at HireMe.WcfClient.ReviewDalProxy.Create() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.WcfClient\ReviewDalProxy.cs:line 22
+at HireMe.Business.Review.CreateNew() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Business\Models\Review.cs:line 124
+at HireMe.Tests.ReviewTests.UPDATE() in C:\Users\User\Documents\Visual Studio 2010\Projects\HireMe\HireMe\HireMe.Tests\Business\ReviewTests.cs:line 37
+]]></stack-trace>
+                        </failure>
+                      </test-case>
                     </results>
                   </test-suite>
                 </results>

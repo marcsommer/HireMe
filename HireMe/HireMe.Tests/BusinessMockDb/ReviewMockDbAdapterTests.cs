@@ -11,7 +11,7 @@ namespace HireMe.Tests
 {
   //TODO: Finish fleshing out ReviewTests to handle more complex scenarios
   [TestFixture]
-  public class ReviewTests : IBusinessTests
+  public class ReviewMockDbAdapterTests : IBusinessTests
   {
     Guid _TestId = Guid.Parse(@"481291C7-3CB3-4C4F-974F-718494D1CA4A");
     string _TestComments = "This is awesome.....NEW COMMENT NEW COMMENT!!!";
